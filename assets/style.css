@@ -24,9 +24,11 @@ nav a.active {
 }
 
 .hero {
-  padding: 120px 20px;
+  padding: 140px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #0b0f2a, #1a2a6c);
+  background:
+    linear-gradient(rgba(10,15,40,0.75), rgba(10,15,40,0.75)),
+    url("images/jwst-disk.jpg") center/cover no-repeat;
   color: #ffffff;
 }
 
