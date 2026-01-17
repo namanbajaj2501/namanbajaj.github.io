@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Publications | Naman Bajaj</title>
 
-  <meta name="description" content="Publications by Naman Bajaj, astronomer studying planet formation and protoplanetary disks.">
+  <meta name="description" content="Publications by Naman Bajaj">
   <meta name="author" content="Naman Bajaj">
 
   <link rel="stylesheet" href="assets/style.css">
@@ -22,35 +22,8 @@
 
 <main>
 <section class="section">
-<h2>Publications</h2>
-
-<!-- ================= BIBTEX DATA ================= -->
-<script type="text/bibtex">
-@article{Bajaj2024,
-  author  = {Bajaj, Naman S. and Pascucci, Ilaria and Gorti, Uma and Alexander, Richard and Sellek, Andrew and Morrison, Jane and Gaspar, Andras and Clarke, Cathie and Xie, Chengyan and Ballabio, Giulia and Deng, Dingshan},
-  title   = {JWST MIRI MRS Observations of T Cha: Discovery of a Spatially Resolved Disk Wind},
-  journal = {Astronomical Journal},
-  year    = {2024},
-  adsurl  = {https://ui.adsabs.harvard.edu/abs/2024AJ....167..127B}
-}
-</script>
-<!-- ================================================= -->
-
-<!-- Template -->
-<div class="bibtex_template">
-  <li>
-    <strong><span class="title"></span></strong><br>
-    <span class="author"></span><br>
-    <em><span class="journal"></span></em>
-    (<span class="year"></span>)
-    &nbsp;—&nbsp;
-    <a href="<span class='adsurl'></span>" target="_blank">ADS</a>
-  </li>
-</div>
-
-<!-- Output -->
-<ul class="bibtex_display"></ul>
-
+  <h2>Publications</h2>
+  <ul id="pub-list"></ul>
 </section>
 </main>
 
@@ -58,33 +31,40 @@
   © 2026 Naman Bajaj
 </footer>
 
-<!-- Library -->
-<script src="https://cdn.jsdelivr.net/npm/bibtex-js@1.0.0/bibtex_js.min.js"></script>
-
-<!-- Sort newest to oldest -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const list = document.querySelector(".bibtex_display");
-    const items = Array.from(list.children);
+const publications = [
+  {
+    title: "JWST MIRI MRS Observations of T Cha: Discovery of a Spatially Resolved Disk Wind",
+    authors: "Bajaj, Naman S.; Pascucci, Ilaria; Gorti, Uma; Alexander, Richard; Sellek, Andrew; Morrison, Jane; Gaspar, Andras; Clarke, Cathie; Xie, Chengyan; Ballabio, Giulia; Deng, Dingshan",
+    journal: "Astronomical Journal",
+    year: 2024,
+    ads: "https://ui.adsabs.harvard.edu/abs/2024AJ....167..127B"
+  }
+];
 
-    items.sort((a, b) => {
-      const ya = parseInt(a.querySelector(".year")?.textContent || 0);
-      const yb = parseInt(b.querySelector(".year")?.textContent || 0);
-      return yb - ya;
-    });
+// Sort newest → oldest
+publications.sort((a, b) => b.year - a.year);
 
-    items.forEach(li => list.appendChild(li));
-  });
-</script>
+// Render
+const ul = document.getElementById("pub-list");
 
-<!-- Bold your name -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const nameRegex = /Bajaj,\s*Naman(\s*S\.)?|Naman(\s*S\.)?\s+Bajaj/g;
-    document.querySelectorAll(".bibtex_display li").forEach(li => {
-      li.innerHTML = li.innerHTML.replace(nameRegex, "<strong>$&</strong>");
-    });
-  });
+publications.forEach(p => {
+  const li = document.createElement("li");
+
+  const authorsBolded = p.authors.replace(
+    /Bajaj,\s*Naman(\s*S\.)?|Naman(\s*S\.)?\s+Bajaj/g,
+    "<strong>$&</strong>"
+  );
+
+  li.innerHTML = `
+    <strong>${p.title}</strong><br>
+    ${authorsBolded}<br>
+    <em>${p.journal}</em> (${p.year}) — 
+    <a href="${p.ads}" target="_blank">ADS</a>
+  `;
+
+  ul.appendChild(li);
+});
 </script>
 
 </body>
