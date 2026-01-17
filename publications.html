@@ -60,6 +60,19 @@
 <!-- BibTeX-JS library -->
 <script src="https://cdn.jsdelivr.net/npm/bibtex-js@1.0.0/bibtex_js.min.js"></script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nameRegex = /Bajaj,\s*Naman(\s*S\.)?|Naman(\s*S\.)?\s+Bajaj/g;
+
+    document.querySelectorAll(".bibtex_display li").forEach(li => {
+      li.innerHTML = li.innerHTML.replace(
+        nameRegex,
+        match => `<strong>${match}</strong>`
+      );
+    });
+  });
+</script>
+
 <!-- Dark mode toggle -->
 <script>
   const toggle = document.getElementById("theme-toggle");
