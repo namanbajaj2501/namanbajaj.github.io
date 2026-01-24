@@ -3,159 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact | Naman Bajaj</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description" content="Contact Naman Bajaj, astronomer studying planet formation and protoplanetary disk evolution.">
   <meta name="author" content="Naman Bajaj">
-  <meta name="keywords" content="Astronomy, Planet Formation, Protoplanetary Disks, Exoplanets">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="assets/style.css">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ==========================
-     Navbar
-========================== -->
+<!-- ================= NAVBAR ================= -->
 <nav class="nav-bar">
   <a href="index.html" class="nav-link">Home</a>
   <a href="about.html" class="nav-link">About</a>
   <a href="research.html" class="nav-link">Research</a>
   <a href="publications.html" class="nav-link">Publications</a>
-  <a href="contact.html" class="nav-link active">Contact</a>
+  <a href="contact.html" class="nav-link">Contact</a>
 
-  <button id="theme-toggle">🌓</button>
+  <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
 </nav>
 
-<!-- ==========================
-     Contact Section
-========================== -->
-<section class="section" style="max-width: 900px;">
-  <h2>Get in Touch</h2>
+<!-- ================= MAIN ================= -->
+<main>
+<section class="section">
 
-  <p style="max-width: 700px; font-size: 1.05rem; opacity: 0.9;">
-    I’m always happy to discuss research, collaborations, or opportunities.
-    The fastest way to reach me is by email.
+  <h2>Contact</h2>
+
+  <p style="max-width: 750px;">
+    If you'd like to get in touch about research, collaborations, or speaking opportunities,
+    feel free to use the form below or reach out via email and academic profiles.
   </p>
 
-  <!-- ==========================
-       Contact Cards
-  ========================== -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 35px;">
+  <!-- ================= CONTACT FORM ================= -->
+  <form
+    action="https://formspree.io/f/mdaevgja"
+    method="POST"
+    id="contact-form"
+    style="max-width: 700px; margin-top: 30px;"
+  >
+    <div style="display: flex; flex-direction: column; gap: 16px;">
 
-    <div class="pub-entry alt1">
-      <div class="pub-text">
-        <h3>Email</h3>
-        <p>
-          <a class="ads-link" href="mailto:namanbajaj@arizona.edu">
-            namanbajaj@arizona.edu
-          </a>
-        </p>
-      </div>
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name"
+        required
+        aria-label="Your name"
+        style="padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-size: 1rem;"
+      >
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email"
+        required
+        aria-label="Your email"
+        style="padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-size: 1rem;"
+      >
+
+      <textarea
+        name="message"
+        rows="5"
+        placeholder="Your message"
+        required
+        aria-label="Your message"
+        style="padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-size: 1rem; resize: vertical;"
+      ></textarea>
+
+      <input type="hidden" name="_subject" value="New message from naman-bajaj.github.io">
+
+      <button type="submit" class="button" style="align-self: flex-start;">
+        Send Message
+      </button>
+
+      <p id="form-status" style="font-size: 0.95rem;"></p>
+
     </div>
+  </form>
 
-    <div class="pub-entry alt2">
-      <div class="pub-text">
-        <h3>Google Scholar</h3>
-        <p>
-          <a class="ads-link" href="https://scholar.google.com/citations?user=YmjCZWAAAAAJ&hl=en" target="_blank">
-            View publications & citations
-          </a>
-        </p>
-      </div>
-    </div>
+  <!-- ================= CONTACT LINKS ================= -->
+  <div style="margin-top: 40px; max-width: 750px;">
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:namanbajaj@arizona.edu" class="ads-link">
+        namanbajaj@arizona.edu
+      </a>
+    </p>
 
-    <div class="pub-entry alt1">
-      <div class="pub-text">
-        <h3>ORCID</h3>
-        <p>
-          <a class="ads-link" href="https://orcid.org/0000-0003-3401-1704" target="_blank">
-            0000-0003-3401-1704
-          </a>
-        </p>
-      </div>
-    </div>
+    <p>
+      <strong>Google Scholar:</strong>
+      <a href="https://scholar.google.com/citations?user=YmjCZWAAAAAJ&hl=en"
+         target="_blank"
+         class="ads-link">
+        scholar.google.com/citations?user=YmjCZWAAAAAJ
+      </a>
+    </p>
 
-    <div class="pub-entry alt2">
-      <div class="pub-text">
-        <h3>ResearchGate</h3>
-        <p>
-          <a class="ads-link" href="https://www.researchgate.net/profile/Naman-Bajaj-2" target="_blank">
-            Research profile
-          </a>
-        </p>
-      </div>
-    </div>
+    <p>
+      <strong>ORCID:</strong>
+      <a href="https://orcid.org/0000-0003-3401-1704"
+         target="_blank"
+         class="ads-link">
+        0000-0003-3401-1704
+      </a>
+    </p>
 
-  </div>
-
-  <!-- ==========================
-       Email Form
-  ========================== -->
-  <div style="margin-top: 60px;">
-    <h3 style="font-family: 'Source Serif 4', serif;">Send me a message</h3>
-
-    <form
-      action="mailto:namanbajaj@arizona.edu"
-      method="post"
-      enctype="text/plain"
-      style="max-width: 700px; margin-top: 20px;"
-    >
-      <div style="display: flex; flex-direction: column; gap: 15px;">
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Your name"
-          required
-          style="padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-size: 1rem;"
-        >
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email"
-          required
-          style="padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-size: 1rem;"
-        >
-
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Your message"
-          required
-          style="padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-size: 1rem; resize: vertical;"
-        ></textarea>
-
-        <button type="submit" class="button" style="align-self: flex-start;">
-          Send Email
-        </button>
-
-      </div>
-    </form>
-
-    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">
-      This will open your default email client with the message pre-filled.
+    <p>
+      <strong>ResearchGate:</strong>
+      <a href="https://www.researchgate.net/profile/Naman-Bajaj-2"
+         target="_blank"
+         class="ads-link">
+        researchgate.net/profile/Naman-Bajaj-2
+      </a>
     </p>
   </div>
 
 </section>
+</main>
 
-<!-- ==========================
-     Footer
-========================== -->
+<!-- ================= FOOTER ================= -->
 <footer>
   © 2026 Naman Bajaj
 </footer>
 
-<!-- ==========================
-     Scripts
-========================== -->
+<!-- ================= SCRIPTS ================= -->
+
+<!-- Contact form (AJAX submit, no redirect) -->
+<script>
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      status.textContent = "Thanks! Your message has been sent.";
+      form.reset();
+    } else {
+      status.textContent = "Oops — something went wrong. Please try again.";
+    }
+  } catch (error) {
+    status.textContent = "Network error. Please try again later.";
+  }
+});
+</script>
+
+<!-- Dark mode -->
 <script>
 const toggle = document.getElementById("theme-toggle");
 if (localStorage.theme === "dark") document.body.classList.add("dark");
@@ -166,8 +168,10 @@ toggle?.addEventListener("click", () => {
 });
 </script>
 
+<!-- Active nav link -->
 <script>
-document.querySelectorAll('.nav-link').forEach(link => {
+const links = document.querySelectorAll('.nav-link');
+links.forEach(link => {
   if (link.href === window.location.href) {
     link.classList.add('active');
   }
