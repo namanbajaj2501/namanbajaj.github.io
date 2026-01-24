@@ -1,157 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Publications | Naman Bajaj</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Publications by Naman Bajaj, astronomer studying planet formation and protoplanetary disks.">
+  <meta name="author" content="Naman Bajaj">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Serif font for titles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
 
-<!-- ==========================
-     Navbar
-========================== -->
 <nav class="nav-bar">
   <a href="index.html" class="nav-link">Home</a>
-  <a href="publications.html" class="nav-link active">Publications</a>
-  <a href="cv.html" class="nav-link">CV</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="research.html" class="nav-link">Research</a>
+  <a href="publications.html" class="nav-link">Publications</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+
+  <button id="theme-toggle">🌓</button>
 </nav>
 
-<!-- ==========================
-     Publications Section
-========================== -->
-<section class="section">
+<main>
+<section class="section publications">
+
   <h2>Publications</h2>
 
-  <!-- Filters -->
-  <div style="margin-bottom: 30px; display: flex; gap: 20px; flex-wrap: wrap;">
-    <select id="year-filter">
-      <option value="all">All years</option>
-    </select>
-
-    <select id="type-filter">
-      <option value="all">All types</option>
-      <option value="journal">Journal</option>
-      <option value="conference">Conference</option>
-      <option value="preprint">Preprint</option>
-    </select>
-  </div>
-
-  <!-- Publication list -->
   <div id="pub-list"></div>
-</section>
 
-<!-- ==========================
-     Image Modal
-========================== -->
-<div class="img-modal" id="img-modal">
-  <img id="modal-img" src="" alt="">
+</section>
+</main>
+
+<footer>
+  © 2026 Naman Bajaj
+</footer>
+
+<!-- Fullscreen image modal -->
+<div id="img-modal" class="img-modal">
+  <img id="modal-img" alt="Publication figure">
 </div>
 
-<!-- ==========================
-     JavaScript
-========================== -->
 <script>
-/* ==========================
-   Publication Data
-========================== */
 const publications = [
   {
-    title: "Tracing Molecular Outflows in Embedded Protostars with JWST/MIRI",
-    authors: "Bajaj, N., et al.",
-    journal: "The Astrophysical Journal",
+    title: "The nested morphology of disk winds from young stars revealed by JWST/NIRSpec observations",
+    authors: "Pascucci, Ilaria; Beck, Tracy L.; Cabrit, Sylvie; Bajaj, Naman S.; Edwards, Suzan; Louvet, Fabien; Najita, Joan R.; Skinner, Bennett N.; Gorti, Uma; Salyk, Colette; Brittain, Sean D.; Krijt, Sebastiaan; Muzerolle Page, James; Ruaud, Maxime; Schwarz, Kamber; Semenov, Dmitry; Duchêne, Gaspard; Villenave, Marion",
+    journal: "Nature Astronomy",
+    year: 2025,
+    ads: "https://ui.adsabs.harvard.edu/abs/2025NatAs...9...81P",
+    image: "assets/images/jwst_disk_winds.jpg" // replace with the relevant figure
+  },
+  {
+    title: "JWST Captures a Sudden Stellar Outburst and Inner Disk Wall Destruction",
+    authors: "Xie, Chengyan; Pascucci, Ilaria; Deng, Dingshan; Bajaj, Naman S.; Alexander, Richard; Sellek, Andrew; Kóspál, Ágnes; Ballabio, Giulia; Gorti, Uma",
+    journal: "Astrophysical Journal",
+    year: 2025,
+    ads: "https://ui.adsabs.harvard.edu/abs/2025ApJ...978...34X",
+    image: "assets/images/jwst_outburst.jpg" // replace with the appropriate figure
+  },
+  {
+    title: "Class I/II Jets with JWST: Mass-loss Rates, Asymmetries, and Binary-induced Wigglings",
+    authors: "Bajaj, Naman S.; Pascucci, Ilaria; Beck, Tracy L.; Edwards, Suzan; Cabrit, Sylvie; Najita, Joan R.; Schwarz, Kamber; Semenov, Dmitry; Salyk, Colette; Gorti, Uma; Brittain, Sean D.; Krijt, Sebastiaan; Ruaud, Maxime; Page, James Muzerolle",
+    journal: "Astronomical Journal",
+    year: 2025,
+    ads: "https://ui.adsabs.harvard.edu/abs/2025AJ....169..296B",
+    image: "assets/images/jwst_jets.jpg"
+  },
+  {
+    title: "Modeling JWST MIRI-MRS Observations of T Cha: Mid-IR Noble Gas Emission Tracing a Dense Disk Wind",
+    authors: "Sellek, Andrew D.; Bajaj, Naman S.; Pascucci, Ilaria; Clarke, Cathie J.; Alexander, Richard; Xie, Chengyan; Ballabio, Giulia; Deng, Dingshan; Gorti, Uma; Gaspar, Andras; Morrison, Jane",
+    journal: "Astronomical Journal",
     year: 2024,
-    type: "journal",
-    ads: "https://ui.adsabs.harvard.edu/",
-    image: "assets/images/pub1.jpg"
+    ads: "https://ui.adsabs.harvard.edu/abs/2024AJ....167..223S",
+    image: "assets/images/tcha_modeling.jpg"
   },
   {
-    title: "Mid-Infrared IFU Diagnostics of Protoplanetary Disks",
-    authors: "Bajaj, N., Smith, J.",
-    journal: "A&A",
-    year: 2023,
-    type: "journal",
-    ads: "https://ui.adsabs.harvard.edu/",
-    image: "assets/images/pub2.jpg"
+    title: "JWST MIRI MRS Observations of T Cha: Discovery of a Spatially Resolved Disk Wind",
+    authors: "Bajaj, Naman S.; Pascucci, Ilaria; Gorti, Uma; Alexander, Richard; Sellek, Andrew; Morrison, Jane; Gaspar, Andras; Clarke, Cathie; Xie, Chengyan; Ballabio, Giulia; Deng, Dingshan",
+    journal: "Astronomical Journal",
+    year: 2024,
+    ads: "https://ui.adsabs.harvard.edu/abs/2024AJ....167..127B",
+    image: "assets/images/tcha_miri.jpg"
   },
   {
-    title: "JWST Early Results on Embedded Star Formation",
-    authors: "Bajaj, N.",
-    journal: "arXiv e-prints",
-    year: 2022,
-    type: "preprint",
-    ads: "https://arxiv.org/",
-    image: "assets/images/pub3.jpg"
+  title: "FORCAST Imaging of Two Small Nearby Clusters: The Coronet and B 59",
+  authors: "Sandell, Göran; Reipurth, Bo; Vacca, William D.; Bajaj, Naman S.",
+  journal: "Astrophysical Journal",
+  year: 2021,
+  ads: "https://ui.adsabs.harvard.edu/abs/2021ApJ...920....7S",
+  image: "assets/images/coronet_b59.jpg" // replace with a relevant figure
   }
 ];
 
-/* ==========================
-   Populate Filters
-========================== */
-const yearFilter = document.getElementById("year-filter");
-const typeFilter = document.getElementById("type-filter");
+// Sort newest → oldest
+publications.sort((a, b) => b.year - a.year);
+
 const container = document.getElementById("pub-list");
 
-const years = [...new Set(publications.map(p => p.year))].sort((a, b) => b - a);
-years.forEach(y => {
-  const opt = document.createElement("option");
-  opt.value = y;
-  opt.textContent = y;
-  yearFilter.appendChild(opt);
+publications.forEach((p, i) => {
+  const entry = document.createElement("div");
+  entry.className = `pub-entry ${i % 2 === 0 ? "alt1" : "alt2"}`;
+
+  const authorsBolded = p.authors.replace(
+    /Bajaj,\s*Naman(\s*S\.)?|Naman(\s*S\.)?\s+Bajaj/g,
+    "<strong>$&</strong>"
+  );
+
+  entry.innerHTML = `
+    <div class="pub-text">
+      <h3 class="pub-title">${p.title}</h3>
+      <p>${authorsBolded}</p>
+      <p>
+        <em>${p.journal}</em> (${p.year}) —
+        <a href="${p.ads}" target="_blank" class="ads-link">View on ADS</a>
+      </p>
+    </div>
+
+    <div class="pub-image">
+      <img src="${p.image}" alt="Publication figure">
+    </div>
+  `;
+
+  container.appendChild(entry);
 });
 
-/* ==========================
-   Render Publications
-========================== */
-function renderPublications() {
-  container.innerHTML = "";
-
-  const selectedYear = yearFilter.value;
-  const selectedType = typeFilter.value;
-
-  const filtered = publications.filter(p => {
-    const yearMatch = selectedYear === "all" || p.year == selectedYear;
-    const typeMatch = selectedType === "all" || p.type === selectedType;
-    return yearMatch && typeMatch;
-  });
-
-  filtered.forEach((p, i) => {
-    const entry = document.createElement("div");
-    entry.className = `pub-entry ${i % 2 === 0 ? "alt1" : "alt2"}`;
-
-    entry.innerHTML = `
-      <div class="pub-text">
-        <h3>${p.title}</h3>
-        <p><strong>${p.authors}</strong></p>
-        <p>${p.journal} (${p.year})</p>
-        <a class="ads-link" href="${p.ads}" target="_blank">ADS / Link</a>
-      </div>
-      <div class="pub-image">
-        <img src="${p.image}" alt="${p.title}">
-      </div>
-    `;
-
-    container.appendChild(entry);
-  });
-}
-
-/* ==========================
-   Events
-========================== */
-yearFilter.addEventListener("change", renderPublications);
-typeFilter.addEventListener("change", renderPublications);
-
-/* ==========================
-   Image Modal
-========================== */
+// Image modal behavior
 const modal = document.getElementById("img-modal");
 const modalImg = document.getElementById("modal-img");
 
@@ -164,10 +139,28 @@ document.addEventListener("click", e => {
   }
 });
 
-/* ==========================
-   Initial Render
-========================== */
-renderPublications();
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") modal.classList.remove("open");
+});
+</script>
+
+<script>
+const toggle = document.getElementById("theme-toggle");
+if (localStorage.theme === "dark") document.body.classList.add("dark");
+
+toggle?.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.theme = document.body.classList.contains("dark") ? "dark" : "light";
+});
+</script>
+
+<script>
+const links = document.querySelectorAll('.nav-link');
+links.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
 </script>
 
 </body>
