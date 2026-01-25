@@ -361,6 +361,29 @@ body.dark .ads-link {
     font-size: 1.8rem;
   }
 
+/* ==========================
+   Contact card background logos
+========================== */
+.contact-email {
+  background: rgba(26,42,108,0.08) url('assets/images/outlook-logo.png') no-repeat top right;
+  background-size: 50px 50px;
+}
+
+.contact-scholar {
+  background: rgba(122,162,255,0.08) url('assets/images/google-scholar-logo.png') no-repeat top right;
+  background-size: 50px 50px;
+}
+
+.contact-orcid {
+  background: rgba(26,42,108,0.08) url('assets/images/orcid-logo.png') no-repeat top right;
+  background-size: 50px 50px;
+}
+
+.contact-researchgate {
+  background: rgba(122,162,255,0.08) url('assets/images/researchgate-logo.png') no-repeat top right;
+  background-size: 50px 50px;
+}
+
   .hero-text p {
     font-size: 1.1rem;
   }
