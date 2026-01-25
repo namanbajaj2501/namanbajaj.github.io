@@ -380,14 +380,6 @@ body.dark .ads-link {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-card.alt1 { background-color: rgba(122,162,255,0.08); }
-.contact-card.alt2 { background-color: rgba(26,42,108,0.08); }
-
-.contact-card.email { background-image: url('assets/images/outlook.png'); }
-.contact-card.scholar { background-image: url('assets/images/google_scholar.png'); }
-.contact-card.orcid { background-image: url('assets/images/orcid.png'); }
-.contact-card.researchgate { background-image: url('assets/images/researchgate.png'); }
-
 .contact-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
