@@ -311,6 +311,44 @@
       opacity: 0.5;
     }
 
+    /* Section Divider for Engineering Work */
+    .section-divider {
+      margin: 5rem 0 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(251, 140, 0, 0.08) 100%);
+      border-radius: 12px;
+      border-left: 5px solid #ff9800;
+    }
+
+    .section-divider h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.8rem;
+      color: #f57c00;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .section-divider h3::before {
+      content: '🔧';
+      font-size: 2rem;
+    }
+
+    .section-divider p {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    body.dark .section-divider {
+      background: linear-gradient(135deg, rgba(255, 152, 0, 0.15) 0%, rgba(251, 140, 0, 0.15) 100%);
+    }
+
+    body.dark .section-divider h3 {
+      color: #ffb74d;
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
       .publications h2 {
@@ -352,7 +390,7 @@
 <section class="section publications">
 
   <h2>Publications</h2>
-  <span class="pub-count" id="pub-count">6 Publications</span>
+  <span class="pub-count" id="pub-count">6 Astronomy Publications</span>
 
   <!-- Filter Controls -->
   <div class="filter-controls">
@@ -378,6 +416,17 @@
   <div class="empty-state" id="empty-state">
     No publications match your filters
   </div>
+
+  <!-- Prior Engineering Work Section -->
+  <div class="section-divider">
+    <h3>Prior Work in Engineering</h3>
+    <p>
+      Before transitioning to astronomy, I conducted research in mechanical engineering focusing on 
+      machine learning applications for intelligent condition-based maintenance systems.
+    </p>
+  </div>
+
+  <div id="engineering-list"></div>
 
 </section>
 </main>
@@ -449,6 +498,18 @@ const publications = [
   }
 ];
 
+const engineeringPublications = [
+  {
+    title: "Application of metaheuristic optimization based support vector machine for milling cutter health monitoring",
+    authors: "Bajaj, Naman S.; Patange, Abhishek D.; Jegadeeshwaran, R.; Pardeshi, Sujit S.; Kulkarni, Kaushal A.; Ghatpande, Rohan S.",
+    journal: "Intelligent Systems with Applications",
+    year: 2023,
+    ads: "https://doi.org/10.1016/j.iswa.2023.200196",
+    image: "assets/images/bajaj2023_milling.jpg",
+    firstAuthor: true
+  }
+];
+
 // Sort newest → oldest
 publications.sort((a, b) => b.year - a.year);
 
@@ -462,7 +523,7 @@ uniqueYears.forEach(year => {
   yearFilter.appendChild(option);
 });
 
-// Render publications
+// Render astronomy publications
 const container = document.getElementById("pub-list");
 const pubEntries = [];
 
@@ -498,6 +559,38 @@ publications.forEach((p, i) => {
   pubEntries.push(entry);
 });
 
+// Render engineering publications (no filtering)
+const engineeringContainer = document.getElementById("engineering-list");
+
+engineeringPublications.forEach((p, i) => {
+  const entry = document.createElement("div");
+  entry.className = `pub-entry ${i % 2 === 0 ? "alt1" : "alt2"}`;
+
+  const authorsBolded = p.authors.replace(
+    /Bajaj,\s*Naman(\s*S\.)?|Naman(\s*S\.)?\s+Bajaj/g,
+    "<strong>$&</strong>"
+  );
+
+  const firstAuthorBadge = p.firstAuthor ? '<span class="first-author-badge">First Author</span>' : '';
+
+  entry.innerHTML = `
+    <div class="pub-text">
+      <h3 class="pub-title">${p.title}${firstAuthorBadge}</h3>
+      <p>${authorsBolded}</p>
+      <p>
+        <em>${p.journal}</em> (${p.year}) —
+        <a href="${p.ads}" target="_blank" class="ads-link">View Article</a>
+      </p>
+    </div>
+
+    <div class="pub-image">
+      <img src="${p.image}" alt="Publication figure" loading="lazy">
+    </div>
+  `;
+
+  engineeringContainer.appendChild(entry);
+});
+
 // Filter functionality
 const authorshipFilter = document.getElementById("authorship-filter");
 const pubCount = document.getElementById("pub-count");
@@ -524,7 +617,7 @@ function applyFilters() {
   });
 
   // Update count badge
-  pubCount.textContent = `${visibleCount} Publication${visibleCount !== 1 ? 's' : ''}`;
+  pubCount.textContent = `${visibleCount} Astronomy Publication${visibleCount !== 1 ? 's' : ''}`;
 
   // Show/hide empty state
   if (visibleCount === 0) {
