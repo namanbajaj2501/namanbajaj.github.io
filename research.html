@@ -47,142 +47,111 @@
       margin: 1rem auto;
     }
 
-    /* Research Theme Headers */
-    .theme-section {
-      margin: 5rem 0;
-      scroll-margin-top: 100px;
+    /* Accordion Sections */
+    .accordion {
+      margin: 2rem 0;
     }
 
-    .theme-header {
-      position: relative;
-      padding: 2rem;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+    .accordion-item {
+      background: var(--bg-color, #fff);
+      border: 2px solid rgba(102, 126, 234, 0.15);
       border-radius: 16px;
-      border-left: 6px solid #667eea;
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    .theme-header h3 {
-      font-size: 2.2rem;
+    .accordion-item:hover {
+      border-color: rgba(102, 126, 234, 0.3);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
+    }
+
+    .accordion-header {
+      padding: 2rem 2.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .accordion-header:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+    }
+
+    .accordion-header h3 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #667eea;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .accordion-header h3::before {
+      content: attr(data-icon);
+      font-size: 2rem;
+    }
+
+    .accordion-toggle {
+      font-size: 1.5rem;
+      color: #667eea;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .accordion-item.active .accordion-toggle {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 10000px;
+    }
+
+    .accordion-inner {
+      padding: 2.5rem;
+    }
+
+    /* Story Content Styling */
+    .story-section {
+      margin: 2.5rem 0;
+    }
+
+    .story-section h4 {
+      font-size: 1.5rem;
       color: #667eea;
       margin: 0 0 1rem 0;
     }
 
-    .theme-header .theme-number {
-      position: absolute;
-      top: -1rem;
-      right: 2rem;
-      font-size: 6rem;
-      font-weight: 900;
-      color: rgba(102, 126, 234, 0.1);
-      line-height: 1;
-    }
-
-    .theme-description {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      opacity: 0.9;
-      margin: 0;
-    }
-
-    /* Project Cards */
-    .project-card {
-      background: var(--bg-color, #fff);
-      border-radius: 16px;
-      border: 2px solid rgba(102, 126, 234, 0.1);
-      overflow: hidden;
-      margin: 3rem 0;
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(102, 126, 234, 0.15);
-      border-color: rgba(102, 126, 234, 0.3);
-    }
-
-    .project-header {
-      padding: 2rem 2.5rem;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-      border-bottom: 2px solid rgba(102, 126, 234, 0.1);
-    }
-
-    .project-header h4 {
-      font-size: 1.6rem;
-      color: #333;
-      margin: 0 0 0.8rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .project-badge {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .project-meta {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .project-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #666;
-    }
-
-    .project-meta-item strong {
-      color: #667eea;
-    }
-
-    .project-content {
-      padding: 2.5rem;
-    }
-
-    .project-content p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 1.2rem;
+    .story-section p {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 1.3rem;
       opacity: 0.9;
     }
 
-    .project-content ul {
-      margin: 1.5rem 0;
-      padding-left: 1.5rem;
-    }
-
-    .project-content li {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 0.8rem;
-      opacity: 0.9;
-    }
-
-    .project-content li strong {
+    .story-section p strong {
       color: #667eea;
       font-weight: 600;
     }
 
     /* Image Sections */
-    .project-image {
-      margin: 2rem 0;
+    .story-image {
+      margin: 2.5rem 0;
       border-radius: 12px;
       overflow: hidden;
     }
 
-    .project-image img {
+    .story-image img {
       width: 100%;
       height: auto;
       display: block;
@@ -199,59 +168,32 @@
       line-height: 1.6;
     }
 
-    .image-placeholder {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-      border: 2px dashed rgba(102, 126, 234, 0.3);
-      border-radius: 12px;
-      padding: 4rem 2rem;
-      text-align: center;
-      color: #667eea;
-      font-weight: 600;
-      min-height: 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-placeholder::before {
-      content: '🖼️';
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 1rem;
-      opacity: 0.5;
-    }
-
-    /* Key Findings Boxes */
-    .key-findings {
+    /* Highlight Box */
+    .highlight-box {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
       border-left: 4px solid #10b981;
       border-radius: 12px;
-      padding: 2rem;
+      padding: 1.8rem;
       margin: 2rem 0;
     }
 
-    .key-findings h5 {
+    .highlight-box h5 {
       color: #10b981;
       font-size: 1.2rem;
-      margin: 0 0 1rem 0;
+      margin: 0 0 0.8rem 0;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    .key-findings h5::before {
-      content: '💡';
+    .highlight-box h5::before {
+      content: '✨';
     }
 
-    .key-findings ul {
+    .highlight-box p {
       margin: 0;
-      padding-left: 1.5rem;
-    }
-
-    .key-findings li {
-      margin-bottom: 0.8rem;
-      line-height: 1.7;
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
 
     /* Publication Links */
@@ -285,74 +227,60 @@
       content: '→';
     }
 
-    /* Research Context Box */
-    .context-box {
-      background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 152, 0, 0.1) 100%);
-      border-left: 4px solid #ffc107;
-      border-radius: 12px;
-      padding: 1.8rem;
-      margin: 2rem 0;
-    }
-
-    .context-box h5 {
-      color: #f57c00;
-      font-size: 1.1rem;
-      margin: 0 0 0.8rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .context-box h5::before {
-      content: '📖';
-    }
-
-    .context-box p {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.7;
+    /* Divider */
+    .story-divider {
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.3) 50%, transparent 100%);
+      margin: 3rem auto;
+      border: none;
     }
 
     /* Dark Mode */
-    body.dark .research-hero,
-    body.dark .theme-header {
+    body.dark .research-hero {
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
       border-color: rgba(102, 126, 234, 0.2);
     }
 
-    body.dark .theme-header h3,
     body.dark .research-hero h2 {
       color: #a0b4ff;
     }
 
-    body.dark .project-card {
+    body.dark .accordion-item {
       background: #2a2a2a;
       border-color: rgba(102, 126, 234, 0.2);
     }
 
-    body.dark .project-card:hover {
-      border-color: rgba(102, 126, 234, 0.5);
+    body.dark .accordion-item:hover {
+      border-color: rgba(102, 126, 234, 0.4);
     }
 
-    body.dark .project-header {
+    body.dark .accordion-header {
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-      border-bottom-color: rgba(102, 126, 234, 0.2);
     }
 
-    body.dark .project-header h4 {
-      color: #e0e0e0;
+    body.dark .accordion-header:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
     }
 
-    body.dark .project-meta-item {
-      color: #b0b0b0;
+    body.dark .accordion-header h3 {
+      color: #a0b4ff;
     }
 
-    body.dark .key-findings {
+    body.dark .accordion-toggle {
+      color: #a0b4ff;
+    }
+
+    body.dark .story-section h4 {
+      color: #a0b4ff;
+    }
+
+    body.dark .story-section p strong {
+      color: #a0b4ff;
+    }
+
+    body.dark .highlight-box {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
-    }
-
-    body.dark .context-box {
-      background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 152, 0, 0.15) 100%);
     }
 
     /* Responsive */
@@ -361,20 +289,15 @@
         font-size: 2rem;
       }
 
-      .theme-header h3 {
-        font-size: 1.8rem;
-      }
-
-      .theme-header .theme-number {
-        font-size: 4rem;
-        right: 1rem;
-      }
-
-      .project-header {
+      .accordion-header {
         padding: 1.5rem;
       }
 
-      .project-content {
+      .accordion-header h3 {
+        font-size: 1.4rem;
+      }
+
+      .accordion-inner {
         padding: 1.5rem;
       }
 
@@ -416,345 +339,349 @@
     </p>
   </div>
 
-  <!-- ============================================
-       THEME 1: PROTOPLANETARY DISK EVOLUTION
-  ============================================ -->
-  <div class="theme-section" id="disk-evolution">
-    <div class="theme-header">
-      <span class="theme-number">01</span>
-      <h3>Protoplanetary Disk Evolution</h3>
-      <p class="theme-description">
-        How do protoplanetary disks evolve? For decades, astronomers thought turbulence driven by 
-        the magnetorotational instability (MRI) was responsible for moving material inward (accretion) 
-        in these disks. However, observations and modeling suggest MRI doesn't work efficiently in the cold, 
-        weakly-ionized regions of protoplanetary disks. <strong>Magnetohydrodynamic (MHD) winds</strong>—
-        magnetic fields that launch material outward while simultaneously driving accretion—have 
-        emerged as a compelling alternative mechanism.
-      </p>
-    </div>
+  <!-- Accordion Sections -->
+  <div class="accordion">
 
-    <!-- PROJECT 1: Pascucci+2025 -->
-    <div class="project-card">
-      <div class="project-header">
-        <h4>
-          Revealing the Nested Structure of Disk Winds
-          <span class="project-badge">First JWST Detection</span>
-        </h4>
-        <div class="project-meta">
-          <div class="project-meta-item">
-            <strong>Lead:</strong> Pascucci et al. (2025)
-          </div>
-          <div class="project-meta-item">
-            <strong>Journal:</strong> Nature Astronomy
-          </div>
-          <div class="project-meta-item">
-            <strong>Instrument:</strong> JWST/NIRSpec
-          </div>
-          <div class="project-meta-item">
-            <strong>My Role:</strong> Key contributor: Performed data calibration
-          </div>
-        </div>
+    <!-- ============================================
+         ACCORDION 1: PROTOPLANETARY DISK EVOLUTION
+    ============================================ -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h3 data-icon="🌀">Protoplanetary Disk Evolution</h3>
+        <span class="accordion-toggle">▼</span>
       </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
 
-      <div class="project-content">
-        <div class="context-box">
-          <h5>The Big Question</h5>
-          <p>
-            If MHD winds drive disk evolution, what do they look like? Theory predicts a "nested" 
-            structure with different wind components at different speeds and temperatures—but 
-            only a few have been directly observed before.
-          </p>
-        </div>
-
-        <p>
-          Using JWST's NIRSpec instrument, we observed four edge-on protoplanetary disks in the 
-          Taurus star-forming region with unprecedented spatial resolution. Amazingly, 
-          we <strong>directly imaged the predicted nested structure of disk winds</strong> in all four disks, 
-          suggesting that disk winds are common in protoplanetary disks.
-        </p>
-
-        <!-- IMAGE PLACEHOLDER 1 -->
-        <div class="project-image">
-        <img src="assets/images/pascucci2025-nested-winds.jpg" alt="JWST nested disk wind structure">
-        <p class="image-caption">
-          JWST/NIRSpec spectro-imaging reveals the nested morphology of disk winds: a fast collimated 
-          [Fe II] jet at the core, surrounded by slower H₂ emission, with broader CO emission forming 
-          the outermost layer towards the edge-on disk of HH 30.
-        </p>
-      </div>
-        <div class="key-findings">
-          <h5>Key Discoveries</h5>
-          <ul>
-            <li><strong>Layered wind structure:</strong> All four disks show a fast, collimated [Fe II] jet at the center, surrounded by a hollow cavity of slower H₂ gas, and in one disk, broader CO emission forming an outer layer</li>
-            <li><strong>Chemical stratification:</strong> Different molecules trace different wind launching regions and temperatures</li>
-            <li><strong>Wind launch radius</strong> Winds in all four protoplanetary disks launch from between 1 and 10 au from the star</li>  
-            <li><strong>Direct MHD evidence:</strong> The nested morphology along with the derived launch radius strongly supports magnetohydrodynamic winds as the origin of the observed winds</li>
-          </ul>
-        </div>
-
-        <p>
-          This discovery provides the <strong>first direct observational confirmation</strong> that 
-          MHD winds are operating in protoplanetary disks, fundamentally changing our understanding 
-          of how material moves in planet-forming environments.
-        </p>
-
-        <div class="publication-links">
-          <a href="https://ui.adsabs.harvard.edu/abs/2025NatAs...9...81P" target="_blank" class="pub-link">
-            Read on ADS
-          </a>
-          <a href="https://arxiv.org/abs/2410.18033" target="_blank" class="pub-link">
-            ArXiv Preprint
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 2: Bajaj+2025 -->
-    <div class="project-card">
-      <div class="project-header">
-        <h4>
-          Measuring Accretion Rates for Edge-on Disks with JWST
-          <span class="project-badge">First Author</span>
-        </h4>
-        <div class="project-meta">
-          <div class="project-meta-item">
-            <strong>Lead:</strong> Bajaj et al. (2025)
+          <div class="story-section">
+            <h4>The Mystery of Disk Accretion</h4>
+            <p>
+              Picture a young star surrounded by a swirling disk of gas and dust—the birthplace of planets. 
+              For this star to grow and for planets to form, material needs to spiral inward toward the star 
+              in a process called <strong>accretion</strong>. But there's a problem: the laws of physics say 
+              this shouldn't happen easily.
+            </p>
+            <p>
+              For decades, astronomers believed that turbulence driven by the <strong>magnetorotational 
+              instability (MRI)</strong> was the engine moving material inward. Think of it like a cosmic mixer, 
+              stirring the disk and allowing gas to lose angular momentum and fall toward the star. But when 
+              scientists looked closer—through observations and detailed computer simulations—they found a 
+              troubling truth: MRI doesn't work well in most of the disk. The gas is too cold and weakly ionized 
+              for magnetic fields to grip it effectively.
+            </p>
+            <p>
+              So if MRI can't do the job, what can? Enter <strong>magnetohydrodynamic (MHD) winds</strong>—
+              magnetic fields that launch material <em>upward and outward</em> from the disk surface while 
+              simultaneously allowing the remaining material to spiral inward. It's a beautiful cosmic paradox: 
+              by throwing some material away, the disk can pull the rest inward.
+            </p>
           </div>
-          <div class="project-meta-item">
-            <strong>Journal:</strong> Astronomical Journal
+
+          <hr class="story-divider">
+
+          <div class="story-section">
+            <h4>Seeing the Invisible: The Nested Structure of Disk Winds</h4>
+            <p>
+              Theory predicted that if MHD winds are real, they should have a distinctive "nested" structure—
+              like Russian dolls, with different layers moving at different speeds and glowing in different 
+              molecules. At the core, a fast, hot jet of ionized iron shoots outward. Surrounding it, slower 
+              molecular hydrogen forms a hollow cone. And in some cases, even broader carbon monoxide emission 
+              marks the outermost layer.
+            </p>
+            <p>
+              But no telescope had ever directly <em>seen</em> this structure—until JWST. Working with 
+              Dr. Ilaria Pascucci and an international team, we pointed JWST's NIRSpec instrument at four edge-on 
+              protoplanetary disks in the Taurus star-forming region. What we saw was stunning.
+            </p>
+
+            <div class="story-image">
+              <img src="assets/images/pascucci2025-nested-winds.jpg" alt="JWST nested disk wind structure">
+              <p class="image-caption">
+                JWST/NIRSpec reveals the nested structure of disk winds in HH 30: a fast [Fe II] jet at the center, 
+                surrounded by slower H₂ emission, with broader CO emission at the edges—exactly as theory predicted.
+              </p>
+            </div>
+
+            <p>
+              In every single disk, we found the predicted nested structure. The fast iron jets, the hollow hydrogen 
+              cones, the carbon monoxide layers—all there, all exactly where MHD wind models said they should be. 
+              We measured where these winds launch from: between 1 and 10 astronomical units from the star, right in 
+              the planet-forming zone.
+            </p>
+
+            <div class="highlight-box">
+              <h5>What We Discovered</h5>
+              <p>
+                This was the <strong>first time anyone had directly imaged the layered structure of MHD disk winds</strong>. 
+                It's not just one disk—it's all four we looked at, suggesting that MHD winds are common, perhaps even 
+                universal, in protoplanetary disks. This fundamentally changes how we understand disk evolution and 
+                the environments where planets form.
+              </p>
+            </div>
+
+            <div class="publication-links">
+              <a href="https://ui.adsabs.harvard.edu/abs/2025NatAs...9...81P" target="_blank" class="pub-link">
+                Read the Paper (Pascucci et al. 2025)
+              </a>
+            </div>
           </div>
-          <div class="project-meta-item">
-            <strong>Instrument:</strong> JWST/NIRSpec
+
+          <hr class="story-divider">
+
+          <div class="story-section">
+            <h4>Measuring the Flow: Jets, Accretion, and Hidden Companions</h4>
+            <p>
+              Seeing the winds was one thing. Understanding <em>how much</em> material they're moving was another. 
+              In my first-author study, I analyzed the same JWST observations to measure the <strong>mass-loss rates</strong> 
+              of these jets—essentially, how much gas is being ejected per year.
+            </p>
+            <p>
+              Using over 30 different forbidden emission lines—glowing signatures of shocked, ionized gas—I calculated 
+              that these jets are losing about 10<sup>-9</sup> solar masses per year. That might sound tiny, but it's 
+              perfectly consistent with the rule of thumb that jets carry away about 10% of the material being accreted. 
+              Flip that around, and we can estimate the <strong>accretion rate</strong>: about 10<sup>-8</sup> solar masses 
+              per year—typical for young stars in Taurus.
+            </p>
+
+            <div class="story-image">
+              <img src="assets/images/bajaj2025-jets.jpg" alt="JWST jet mass-loss measurements">
+              <p class="image-caption">
+                Accretion rates estimated from jet mass-loss for four edge-on disks (red stars) compared to other disks 
+                in Taurus. Our targets are typical—meaning MHD winds are common, not rare anomalies.
+              </p>
+            </div>
+
+            <p>
+              But the jets revealed more than just mass loss. In one system, <strong>Tau 042021</strong>, I noticed 
+              something odd: the jet was wiggling—oscillating side to side in a mirror-symmetric pattern. This wasn't 
+              random. It was the signature of a <strong>hidden binary companion</strong>, pulling the jet-launching star 
+              in a 2.5-year orbit. JWST had revealed a companion star that no one knew was there.
+            </p>
+            <p>
+              We also found that the jets are intrinsically asymmetric—one side is brighter than the other, and it's 
+              not because of dust blocking the light. It's something fundamental about how the jets are launched, a clue 
+              we're still working to fully understand.
+            </p>
+
+            <div class="highlight-box">
+              <h5>Why This Matters</h5>
+              <p>
+                By measuring accretion and mass loss in edge-on disks—systems where traditional methods fail—we showed 
+                that MHD winds aren't exotic outliers. They're operating in <strong>ordinary, typical disks</strong>. 
+                This means MHD winds are likely a fundamental part of how all protoplanetary disks evolve.
+              </p>
+            </div>
+
+            <div class="publication-links">
+              <a href="https://ui.adsabs.harvard.edu/abs/2025AJ....169..296B" target="_blank" class="pub-link">
+                Read the Paper (Bajaj et al. 2025)
+              </a>
+            </div>
           </div>
-          <div class="project-meta-item">
-            <strong>My Role:</strong> First Author
-          </div>
-        </div>
-      </div>
 
-      <div class="project-content">
-        <div class="context-box">
-          <h5>Why This Matters</h5>
-          <p>
-            Understanding how much mass disks lose through outflows is critical for determining how 
-            long planets have to form and how disk material is redistributed during planetary 
-            system assembly.
-          </p>
-        </div>
-
-        <p>
-          In this study, I led the analysis of JWST/NIRSpec observations of Class I and II jets 
-          from the same four systems. Using over 30 forbidden emission lines—including [Fe II], 
-          He I, and hydrogen Paschen and Brackett series—I calculated the <strong>mass loss rates for jets, and hence accretion,
-          in the JWST era</strong>.
-        </p>
-
-        <!-- IMAGE PLACEHOLDER 2 -->
-        <div class="project-image">
-          <img src="assets/images/bajaj2025-jets.jpg" alt="JWST Class I/II Jets">
-          <p class="image-caption">
-            Comparison of the accretion rate estimated as 10 x jet mass loss rate for the four edge-on disks with other disks in
-            the Taurus star forming region for whom accretion rates are well knowmn.
-          </p>
-        </div>
-
-        <div class="key-findings">
-          <h5>Key Discoveries</h5>
-          <ul>
-            <li><strong>Jet Mass-loss rates:</strong> Measured at average ~10⁻⁹ M☉/yr using three independent methods, all yielding consistent results</li>
-            <li><strong>Accretion rates:</strong> All four disks are accreting at ~10<sup>-8</sup> M☉/yr, typical of the star forming region they are part of -- meaning we found MHD winds in an unbiased sample </li>
-            <li><strong>Jet asymmetries:</strong> Significant brightness differences between red- and blue-shifted jet lobes that are <em>intrinsic</em> to the launching mechanism, not caused by dust extinction</li>
-            <li><strong>Binary-induced wiggles:</strong> Discovered mirror-symmetric jet oscillations in one system (Tau 042021), revealing a hidden low-mass binary companion with a 2.5-year orbit</li>
-            <li><strong>Shock diagnostics:</strong> Measured electron densities (~1000 cm⁻³), shock speeds (50–60 km/s), and ionization fractions (0.1–0.2) with high precision</li>
-          </ul>
-        </div>
-
-        <p>
-          These results provide crucial constraints on how disk winds regulate angular momentum 
-          transport and mass loss during the planet formation epoch, while also demonstrating 
-          JWST's power to reveal hidden stellar companions through jet dynamics.
-        </p>
-
-        <div class="publication-links">
-          <a href="https://ui.adsabs.harvard.edu/abs/2025AJ....169..296B" target="_blank" class="pub-link">
-            Read on ADS
-          </a>
-          <a href="https://arxiv.org/abs/2503.23319" target="_blank" class="pub-link">
-            ArXiv Preprint
-          </a>
         </div>
       </div>
     </div>
 
-  </div>
+    <!-- ============================================
+         ACCORDION 2: PROTOPLANETARY DISK DISPERSAL
+    ============================================ -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h3 data-icon="💨">Protoplanetary Disk Dispersal</h3>
+        <span class="accordion-toggle">▼</span>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
 
-  <!-- ============================================
-       THEME 2: PROTOPLANETARY DISK DISPERSAL
-  ============================================ -->
-  <div class="theme-section" id="disk-dispersal">
-    <div class="theme-header">
-      <span class="theme-number">02</span>
-      <h3>Protoplanetary Disk Dispersal</h3>
-      <p class="theme-description">
-        The final act of planet formation: how do protoplanetary disks lose their gas? 
-        <strong>Photoevaporative winds</strong>—driven by high-energy stellar radiation (X-rays and 
-        extreme UV)—are thought to clear disk gas in just a few million years, essentially stopping 
-        giant planet formation and determining which planetary systems can host Jupiters. Despite 
-        decades of work, direct observational evidence (spatial) has been elusive—until JWST.
-      </p>
+          <div class="story-section">
+            <h4>The Final Act: How Disks Die</h4>
+            <p>
+              Protoplanetary disks don't last forever. Within a few million years, the gas—the fuel for giant planet 
+              formation—vanishes. Once the gas is gone, no more Jupiters or Saturns can form. Rocky planets can still 
+              assemble from leftover dust, but the window for gas giants closes.
+            </p>
+            <p>
+              Astronomers have long theorized that <strong>photoevaporative winds</strong>—driven by intense X-rays and 
+              extreme ultraviolet (EUV) radiation from the central star—are responsible for clearing the gas. Imagine the 
+              star as a cosmic hairdryer, heating the disk surface until gas molecules move fast enough to escape the 
+              star's gravity entirely. The gas doesn't fall inward or get ejected by magnetic fields—it just... leaves.
+            </p>
+            <p>
+              This process determines the fate of planetary systems. Clear the gas too early, and you get a system like 
+              ours—rocky planets close in, maybe a few gas giants farther out. Clear it too late, and you might end up 
+              with hot Jupiters or multiple giant planets. Photoevaporation sets the clock.
+            </p>
+            <p>
+              But for 30 years, this was all theory. No one had ever <em>directly seen</em> a photoevaporative wind 
+              clearing a disk—until my team used JWST to look at T Chamaeleontis.
+            </p>
+          </div>
+
+          <hr class="story-divider">
+
+          <div class="story-section">
+            <h4>The First Image: Watching a Disk Evaporate</h4>
+            <p>
+              T Chamaeleontis (T Cha) is what we call a "transitional disk"—a disk with a large gap cleared of dust, 
+              like a donut. We suspected this gap was carved by a photoevaporative wind, but we needed proof.
+            </p>
+            <p>
+              Using JWST's MIRI instrument, which observes in the mid-infrared, I led observations targeting noble gas 
+              emission lines—specifically neon and argon. These atoms are perfect tracers: they don't stick to dust, 
+              they glow brightly when ionized by X-rays and UV light, and their emission patterns tell us exactly where 
+              the wind is and what's powering it.
+            </p>
+
+            <div class="story-image">
+              <img src="assets/images/bajaj2024-tcha-wind.jpg" alt="JWST photoevaporative wind image">
+              <p class="image-caption">
+                The first direct image of a photoevaporative wind: JWST/MIRI reveals spatially extended [Ne II] emission 
+                from T Cha—gas being blown away by the star's high-energy radiation.
+              </p>
+            </div>
+
+            <p>
+              What we saw was groundbreaking. The <strong>[Ne II] emission was spatially extended</strong>—it wasn't just 
+              a point source at the star; it spread out across the disk. This was direct, visual proof that gas was being 
+              launched from the disk surface and escaping into space.
+            </p>
+            <p>
+              We detected four noble gas lines in total: [Ne II], [Ne III], [Ar II], and [Ar III]. The [Ar III] detection 
+              was a first—<em>no one had ever seen that line in any protoplanetary disk before</em>. By comparing the ratios 
+              of these lines, we determined that <strong>neon is ionized by X-rays, while argon is ionized by EUV photons</strong>. 
+              The star's high-energy radiation is the engine driving the wind.
+            </p>
+
+            <div class="highlight-box">
+              <h5>A 30-Year Question Answered</h5>
+              <p>
+                This was the <strong>first spatially resolved detection of a photoevaporative disk wind</strong>. After 
+                three decades of theory and indirect evidence, we finally <em>saw</em> it happening. T Cha's disk is being 
+                cleared by radiation-driven winds, and we watched it in action.
+              </p>
+            </div>
+
+            <div class="publication-links">
+              <a href="https://ui.adsabs.harvard.edu/abs/2024AJ....167..127B" target="_blank" class="pub-link">
+                Read the Paper (Bajaj et al. 2024)
+              </a>
+            </div>
+          </div>
+
+          <hr class="story-divider">
+
+          <div class="story-section">
+            <h4>Understanding the Wind: Models Meet Reality</h4>
+            <p>
+              Seeing the wind was the first step. Understanding its physics required sophisticated modeling. Working with 
+              Dr. Andrew Sellek and collaborators, we used hydrodynamic simulations combined with radiative transfer 
+              calculations to interpret what we saw.
+            </p>
+            <p>
+              The models revealed that the wind is <strong>dense</strong>—much denser than expected, with electron densities 
+              around 10,000–100,000 particles per cubic centimeter. It launches from about <strong>1 AU from the star</strong> 
+              and extends outward beyond 10 AU, matching the location of the dust gap.
+            </p>
+
+            <div class="story-image">
+              <img src="assets/images/sellek2024-modeling.jpg" alt="Model of JWST photoevaporative wind">
+              <p class="image-caption">
+                Hydrodynamic models of photoevaporative winds, combined with radiative transfer and synthetic JWST observations, 
+                reproduce the observed noble gas emission and constrain the wind's density and launching region.
+              </p>
+            </div>
+
+            <p>
+              The compact [Ar II] emission compared to the extended [Ne II] emission told us something critical: the wind 
+              is so dense that it <strong>shields itself from soft X-rays</strong>, creating distinct ionization zones. Hard 
+              X-rays penetrate deep and ionize neon everywhere, but softer photons are absorbed in the wind's outer layers, 
+              ionizing argon only in specific regions.
+            </p>
+            <p>
+              This shielding effect is a hallmark of <strong>thermal photoevaporation</strong>—the wind is driven by heating, 
+              not magnetic fields. In T Cha's outer disk, at least, photoevaporation is the dominant clearing mechanism.
+            </p>
+
+            <div class="highlight-box">
+              <h5>From Detection to Understanding</h5>
+              <p>
+                By combining JWST observations with state-of-the-art models, we didn't just see the wind—we <strong>measured 
+                its density, temperature, ionization state, and launching radius</strong>. This is the first detailed physical 
+                characterization of a photoevaporative wind, giving us the tools to understand how disk gas is cleared and 
+                how that impacts planet formation.
+              </p>
+            </div>
+
+            <div class="publication-links">
+              <a href="https://ui.adsabs.harvard.edu/abs/2024AJ..167..223S" target="_blank" class="pub-link">
+                Read the Paper (Sellek et al. 2024)
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
-    <!-- PROJECT 3: Bajaj+2024 -->
-    <div class="project-card">
-      <div class="project-header">
-        <h4>
-          First Spatially Resolved Images of a Photoevaporative Disk Wind
-          <span class="project-badge">First Author</span>
-          <span class="project-badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">Breakthrough Discovery</span>
-        </h4>
-        <div class="project-meta">
-          <div class="project-meta-item">
-            <strong>Lead:</strong> Bajaj et al. (2024)
-          </div>
-          <div class="project-meta-item">
-            <strong>Journal:</strong> Astronomical Journal
-          </div>
-          <div class="project-meta-item">
-            <strong>Instrument:</strong> JWST/MIRI-MRS
-          </div>
-          <div class="project-meta-item">
-            <strong>My Role:</strong> First Author
-          </div>
-        </div>
+    <!-- ============================================
+         ACCORDION 3: CIRCUMBINARY DISK EVOLUTION
+    ============================================ -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h3 data-icon="🔭">Circumbinary Disk Evolution</h3>
+        <span class="accordion-toggle">▼</span>
       </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
 
-      <div class="project-content">
-        <div class="context-box">
-          <h5>The Challenge</h5>
-          <p>
-            Photoevaporative winds have been theorized for 30+ years, but no telescope before JWST 
-            had the sensitivity and spatial resolution in the mid-infrared to actually <em>see</em> 
-            them.
-          </p>
-        </div>
-
-        <p>
-          Using JWST's MIRI Medium Resolution Spectrograph (MRS), we led observations of T Chamaeleontis 
-          (T Cha)—a transitional disk with a large dust gap. We detected <strong>the first spatially 
-          extended, directly imaged photoevaporative disk wind</strong> through mid-infrared noble gas 
-          emission lines.
-        </p>
-
-        <!-- IMAGE PLACEHOLDER 3 -->
-        <div class="project-image">
-          <img src="assets/images/bajaj2024-tcha-wind.jpg" alt="JWST photoevaporative wind image">
-          <p class="image-caption">
-            JWST/MIRI-MRS observations reveal spatially extended [Ne II] 12.81 μm emission from the 
-            T Cha disk wind—the first direct image of a photoevaporative wind clearing a protoplanetary disk.
-          </p>
-        </div>
-
-        <div class="key-findings">
-          <h5>Key Discoveries</h5>
-          <ul>
-            <li><strong>First direct detection:</strong> Spatially resolved [Ne II] 12.81 μm emission—the first time a photoevaporative wind has been directly imaged</li>
-            <li><strong>Noble gas detections:</strong> Four forbidden noble gas lines detected: [Ne II], [Ne III], [Ar II], and [Ar III]—with [Ar III] detected for the first time in <em>any</em> protoplanetary disk</li>
-            <li><strong>Ionization mechanisms:</strong> Line ratios reveal that argon is ionized by extreme UV photons while neon is ionized by X-rays, pinpointing the energy sources likely driving the wind</li>
-            <li><strong>Clearing timescales:</strong> Measurements constrain how quickly gas is removed, directly impacting when giant planet formation must cease</li>
-          </ul>
-        </div>
-
-        <p>
-          This discovery represents <strong>direct observational proof that photoevaporative 
-          winds are actively clearing gas from protoplanetary disks</strong>, confirming decades of 
-          theoretical predictions and opening a new era in studying disk dispersal.
-        </p>
-
-        <div class="publication-links">
-          <a href="https://ui.adsabs.harvard.edu/abs/2024AJ....167..127B" target="_blank" class="pub-link">
-            Read on ADS
-          </a>
-          <a href="https://arxiv.org/abs/2403.01060" target="_blank" class="pub-link">
-            ArXiv Preprint
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 4: Sellek+2024 -->
-    <div class="project-card">
-      <div class="project-header">
-        <h4>
-          Modeling the T Cha Disk Wind: Constraining Wind Density and Launch Radius
-          <span class="project-badge">Co-Author</span>
-        </h4>
-        <div class="project-meta">
-          <div class="project-meta-item">
-            <strong>Lead:</strong> Sellek et al. (2024)
+          <div class="story-section">
+            <h4>Disks Around Double Stars: A New Frontier</h4>
+            <p>
+              Most stars aren't alone—many have binary companions, two stars orbiting each other. When a protoplanetary 
+              disk surrounds <em>both</em> stars, we call it a <strong>circumbinary disk</strong>. These systems are 
+              fascinating laboratories for planet formation because the gravitational dance of two stars creates unique 
+              challenges and opportunities.
+            </p>
+            <p>
+              The orbiting binary carves a large gap in the inner disk, like a cosmic lawnmower clearing a path. This 
+              affects how material accretes onto the stars, how winds are launched, and how planets can form. We've found 
+              circumbinary planets—worlds orbiting both stars, like Tatooine from Star Wars—but we still don't fully 
+              understand how they got there.
+            </p>
+            <p>
+              My work on circumbinary disks is in its early stages, but the questions are compelling: How do MHD winds 
+              behave when there are <em>two</em> stars stirring the magnetic field? Does photoevaporation work differently 
+              when the radiation comes from two sources? And what does this mean for planet formation in these exotic systems?
+            </p>
           </div>
-          <div class="project-meta-item">
-            <strong>Journal:</strong> Astronomical Journal
+
+          <hr class="story-divider">
+
+          <div class="story-section">
+            <h4>Early Results and Future Directions</h4>
+            <p>
+              Using JWST, I'm beginning to observe circumbinary disks with the same techniques we used for single-star 
+              systems. The goal is to see if the nested structure of MHD winds and the signatures of photoevaporation 
+              appear in these more complex environments.
+            </p>
+            <p>
+              Preliminary observations suggest that circumbinary disks do launch winds, but the structure may be more 
+              complex due to the binary's gravitational perturbations. In some systems, we see asymmetries—one side of 
+              the disk may be brighter or more extended than the other, possibly due to the orbital motion of the stars.
+            </p>
+
+            <div class="highlight-box">
+              <h5>The Next Chapter</h5>
+              <p>
+                This research is ongoing, and JWST is giving us the first detailed views of how circumbinary disks evolve. 
+                Over the next few years, I'll be analyzing more systems, comparing them to single-star disks, and working 
+                to understand how planets form in these dynamic, double-star environments. The story of circumbinary disk 
+                evolution is just beginning—stay tuned for more discoveries.
+              </p>
+            </div>
           </div>
-          <div class="project-meta-item">
-            <strong>Instrument:</strong> JWST/MIRI-MRS
-          </div>
-          <div class="project-meta-item">
-            <strong>My Role:</strong> Key Author: Performed Comparisons of models with observations
-          </div>
-        </div>
-      </div>
 
-      <div class="project-content">
-        <div class="context-box">
-          <h5>From Observation to Understanding</h5>
-          <p>
-            Detecting the wind was just the first step. To truly understand how photoevaporation 
-            works, we needed sophisticated radiative transfer modeling to decode what the observed 
-            emission lines tell us about the wind's physical properties.
-          </p>
-        </div>
-
-        <p>
-          In this companion study led by Dr. Andrew Sellek, we used advanced hydrodynamic wind models 
-          combined with radiative transfer calculations to interpret the JWST/MIRI-MRS observations 
-          of T Cha. The goal: determine the wind's density, temperature structure, and where it's 
-          launched from in the disk.
-        </p>
-
-        <!-- IMAGE PLACEHOLDER 4 -->
-        <div class="project-image">
-          <img src="assets/images/sellek2024-modeling.jpg" alt="Model of JWST photoevaporative wind">
-          <p class="image-caption">
-            Hydrodynamic wind models combined with radiative transfer calculations and MIRISim reproduce the observed 
-            noble gas emission, revealing a dense photoevaporative wind launched from ~1-2 au.
-          </p>
-        </div>
-
-        <div class="key-findings">
-          <h5>Key Findings</h5>
-          <ul>
-            <li><strong>Dense wind confirmed:</strong> Models require a high-density wind (ne ~ 10⁴–10⁵ cm⁻³) to match observed line luminosities</li>
-            <li><strong>Launch radius:</strong> Wind originates from ~1 AU but extends to >10 AU, consistent with theoretical photoevaporative wind models</li>
-            <li><strong>X-ray vs. EUV ionization:</strong> The compact [Ar II] emission (compared to extended [Ne II]) requires neon ionization by hard X-rays and argon ionization by softer X-rays/EUV photons</li>
-            <li><strong>Shielding effects:</strong> The dense wind shields itself from soft X-rays, creating distinct ionization zones that produce the observed noble gas emission pattern</li>
-            <li><strong>Photoevaporation confirmed:</strong> The wind properties favor a thermal photoevaporative origin over MHD launching for the outer disk regions</li>
-          </ul>
-        </div>
-
-        <p>
-          By matching theoretical models to our JWST observations, this work provides the <strong>first 
-          detailed physical characterization of a photoevaporative wind</strong>, including its density 
-          structure, ionization state, and launching mechanism—critical information for understanding 
-          how disk gas dispersal impacts planet formation outcomes.
-        </p>
-
-        <div class="publication-links">
-          <a href="https://ui.adsabs.harvard.edu/abs/2024AJ..167..223S" target="_blank" class="pub-link">
-            Read on ADS
-          </a>
-          <a href="https://arxiv.org/abs/2403.09780" target="_blank" class="pub-link">
-            ArXiv Preprint
-          </a>
         </div>
       </div>
     </div>
@@ -777,8 +704,7 @@
     <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
       These discoveries are just the beginning. JWST is opening a new window into planet formation, 
       and the next few years promise even more breakthroughs in understanding how planetary systems—
-      including habitable worlds—come to be. My ongoing projects will expand on this initial results 
-      and provide an even broader understanding
+      including habitable worlds—come to be.
     </p>
   </div>
 
@@ -788,6 +714,31 @@
 <footer>
   © 2026 Naman Bajaj
 </footer>
+
+<script>
+// Accordion functionality
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // Close all accordion items
+    document.querySelectorAll('.accordion-item').forEach(i => {
+      i.classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  });
+});
+
+// Open first accordion by default
+document.querySelector('.accordion-item').classList.add('active');
+</script>
 
 <script>
 const toggle = document.getElementById("theme-toggle");
