@@ -316,7 +316,7 @@
     .home-footer {
       position: relative;
       padding: 6rem 3rem 3rem;
-      background: #f0f0f5;
+      background: #e8e9f3;
       border-top: 2px solid rgba(102, 126, 234, 0.2);
       overflow: hidden;
     }
@@ -326,46 +326,50 @@
       border-top-color: rgba(102, 126, 234, 0.3);
     }
 
-    /* Constellation Background */
+    /* Constellation Background - MORE PROMINENT */
     .footer-constellation {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      opacity: 0.2;
+      opacity: 1;
       pointer-events: none;
       overflow: hidden;
       z-index: 0;
     }
 
-    body.dark .footer-constellation {
-      opacity: 0.3;
-    }
-
     .constellation-dot {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       background: #667eea;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+      box-shadow: 0 0 15px rgba(102, 126, 234, 0.8), 0 0 30px rgba(102, 126, 234, 0.4);
+      animation: twinkle 3s ease-in-out infinite;
     }
 
     body.dark .constellation-dot {
       background: #a0b4ff;
-      box-shadow: 0 0 12px rgba(160, 180, 255, 0.7);
+      box-shadow: 0 0 20px rgba(160, 180, 255, 0.9), 0 0 40px rgba(160, 180, 255, 0.5);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
     }
 
     .constellation-line {
       position: absolute;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.6), transparent);
       transform-origin: left center;
+      box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
     }
 
     body.dark .constellation-line {
-      background: linear-gradient(90deg, transparent, rgba(160, 180, 255, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(160, 180, 255, 0.7), transparent);
+      box-shadow: 0 0 10px rgba(160, 180, 255, 0.5);
     }
 
     .footer-container {
@@ -392,7 +396,7 @@
     .footer-tagline {
       font-size: 1.2rem;
       line-height: 1.8;
-      color: #666;
+      color: #555;
       margin-bottom: 4rem;
       max-width: 700px;
     }
@@ -557,12 +561,13 @@
     .footer-bottom {
       padding-top: 2.5rem;
       border-top: 1px solid rgba(102, 126, 234, 0.15);
-      color: #999;
+      color: #888;
       font-size: 0.95rem;
     }
 
     body.dark .footer-bottom {
       border-top-color: rgba(102, 126, 234, 0.25);
+      color: #999;
     }
 
     /* Responsive Design */
@@ -991,7 +996,7 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Create Constellation Background
+// Create PROMINENT Constellation Background
 function createConstellation() {
   const constellation = document.getElementById('constellation');
   const width = constellation.offsetWidth;
@@ -1000,9 +1005,9 @@ function createConstellation() {
   // Clear existing
   constellation.innerHTML = '';
   
-  // Create dots (stars)
+  // Create MORE dots (stars) with random delays for twinkling
   const dots = [];
-  const numDots = 30;
+  const numDots = 50;  // Increased from 30
   
   for (let i = 0; i < numDots; i++) {
     const dot = document.createElement('div');
@@ -1011,19 +1016,20 @@ function createConstellation() {
     const y = Math.random() * height;
     dot.style.left = x + 'px';
     dot.style.top = y + 'px';
+    dot.style.animationDelay = Math.random() * 3 + 's';  // Random twinkle timing
     constellation.appendChild(dot);
     dots.push({ x, y, element: dot });
   }
   
-  // Connect nearby dots with lines
+  // Connect nearby dots with MORE VISIBLE lines
   for (let i = 0; i < dots.length; i++) {
     for (let j = i + 1; j < dots.length; j++) {
       const dx = dots[j].x - dots[i].x;
       const dy = dots[j].y - dots[i].y;
       const distance = Math.sqrt(dx * dx + dy * dy);
       
-      // Only connect dots within 200px
-      if (distance < 200) {
+      // Connect dots within 250px (increased from 200px)
+      if (distance < 250) {
         const line = document.createElement('div');
         line.className = 'constellation-line';
         const angle = Math.atan2(dy, dx);
@@ -1031,7 +1037,7 @@ function createConstellation() {
         line.style.left = dots[i].x + 'px';
         line.style.top = dots[i].y + 'px';
         line.style.transform = `rotate(${angle}rad)`;
-        line.style.opacity = (1 - distance / 200) * 0.4;
+        line.style.opacity = (1 - distance / 250) * 0.7;  // More visible
         constellation.appendChild(line);
       }
     }
