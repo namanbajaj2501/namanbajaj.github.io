@@ -1057,11 +1057,61 @@ window.addEventListener('resize', () => {
 });
 
 // Search Functionality
+// Search Functionality - Search within website
 document.getElementById('searchBox').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    const searchTerm = e.target.value.trim();
+    const searchTerm = e.target.value.trim().toLowerCase();
     if (searchTerm) {
-      window.open(`https://www.google.com/search?q=site:naman-bajaj.github.io ${encodeURIComponent(searchTerm)}`, '_blank');
+      // Define all pages and their content keywords
+      const pages = [
+        {
+          url: 'index.html',
+          title: 'Home',
+          keywords: ['home', 'naman bajaj', 'astronomer', 'planet formation', 'jwst', 'nasa', 'protoplanetary disk', 'disk winds', 'photoevaporation']
+        },
+        {
+          url: 'about.html',
+          title: 'About Me',
+          keywords: ['about', 'biography', 'education', 'background', 'india', 'university of arizona', 'phd', 'mechanical engineering', 'astronomy']
+        },
+        {
+          url: 'research.html',
+          title: 'Research',
+          keywords: ['research', 'disk evolution', 'disk dispersal', 'circumbinary', 'jwst', 'miri', 'nirspec', 'photoevaporation', 'mhd winds', 'jets', 'tcha', 'binary']
+        },
+        {
+          url: 'publications.html',
+          title: 'Publications',
+          keywords: ['publications', 'papers', 'nature astronomy', 'astronomical journal', 'astrophysical journal', 'first author', 'ads', 'pascucci', 'bajaj']
+        },
+        {
+          url: 'outreach.html',
+          title: 'Outreach',
+          keywords: ['outreach', 'podcast', 'school', 'press', 'media', 'science communication', 'education', 'seti']
+        },
+        {
+          url: 'contact.html',
+          title: 'Contact',
+          keywords: ['contact', 'email', 'collaboration', 'get in touch', 'reach out']
+        }
+      ];
+
+      // Search for matches
+      const matches = pages.filter(page => {
+        return page.keywords.some(keyword => keyword.includes(searchTerm)) ||
+               page.title.toLowerCase().includes(searchTerm);
+      });
+
+      if (matches.length > 0) {
+        // Redirect to first match
+        window.location.href = matches[0].url;
+      } else {
+        // If no match, show alert and offer Google search
+        const googleSearch = confirm(`No direct match found for "${searchTerm}".\n\nWould you like to search on Google instead?`);
+        if (googleSearch) {
+          window.open(`https://www.google.com/search?q=site:naman-bajaj.github.io ${encodeURIComponent(searchTerm)}`, '_blank');
+        }
+      }
     }
   }
 });
