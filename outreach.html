@@ -218,10 +218,18 @@
       margin-bottom: 1rem;
     }
 
-    /* Content Grid */
+    /* Content Grid - 2 columns for podcasts */
     .content-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+
+    /* 3x1 Grid for School & Press - Desktop */
+    .content-grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.8rem;
       margin: 2rem 0;
     }
@@ -623,6 +631,13 @@
     body.dark .card-content .meta { color: #a0b4ff; }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      /* 3x1 becomes 2x2 on tablets */
+      .content-grid-3col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       body { max-width: 100vw; overflow-x: hidden; }
 
@@ -641,7 +656,9 @@
 
       .section-header h3 { font-size: 1.5rem; }
 
-      .content-grid {
+      /* Both grids become 1 column on mobile */
+      .content-grid,
+      .content-grid-3col {
         grid-template-columns: 1fr;
       }
 
@@ -758,7 +775,7 @@
     </div>
   </div>
 
-  <!-- School Outreach -->
+  <!-- School Outreach - 3x1 Grid -->
   <div class="outreach-section">
     <div class="section-header">
       <h3 data-icon="🎓">School Outreach</h3>
@@ -777,7 +794,7 @@
       </p>
     </div>
 
-    <div class="content-grid">
+    <div class="content-grid-3col">
       
       <div class="outreach-card">
         <div class="card-image">
@@ -833,7 +850,7 @@
     </div>
   </div>
 
-  <!-- Press & Media -->
+  <!-- Press & Media - 3x1 Grid -->
   <div class="outreach-section">
     <div class="section-header">
       <h3 data-icon="📰">Press & Media Coverage</h3>
@@ -853,7 +870,7 @@
       </p>
     </div>
 
-    <div class="content-grid">
+    <div class="content-grid-3col">
       
       <div class="outreach-card">
         <div class="card-image">
@@ -885,7 +902,7 @@
           <div class="meta">University of Arizona • 2025</div>
           <p>
             University feature on my discovery of a hidden binary companion revealed by jet wiggles in 
-            JWST observations���showing how careful data analysis can uncover unexpected surprises.
+            JWST observations—showing how careful data analysis can uncover unexpected surprises.
           </p>
           <a href="https://grad.arizona.edu/news/graduate-student-astronomer-found-sneaky-extra-star-james-webb-space-telescope-data" target="_blank" class="card-link">Read Article</a>
         </div>
