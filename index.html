@@ -19,12 +19,77 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      width: 100%;
     }
 
-    /* Top Navigation */
+    /* MODERN FANCY NAVIGATION BAR */
+    .nav-bar {
+      position: sticky !important;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+      border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+      padding: 0.8rem 2rem !important;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    body.dark .nav-bar {
+      background: rgba(26, 26, 26, 0.85) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+      border-bottom-color: rgba(102, 126, 234, 0.2) !important;
+    }
+
     .nav-bar .nav-link {
-      font-size: 1.2rem !important;
+      font-size: 1.1rem !important;
       font-weight: 600 !important;
+      padding: 0.6rem 1.2rem !important;
+      border-radius: 10px !important;
+      transition: all 0.3s ease !important;
+      position: relative;
+      color: #333 !important;
+    }
+
+    body.dark .nav-bar .nav-link {
+      color: #e0e0e0 !important;
+    }
+
+    .nav-bar .nav-link:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-bar .nav-link.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      color: white !important;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    body.dark .nav-bar .nav-link.active {
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+    }
+
+    .nav-bar #theme-toggle {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      border: none !important;
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 50% !important;
+      font-size: 1.3rem !important;
+      cursor: pointer;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-bar #theme-toggle:hover {
+      transform: rotate(180deg) scale(1.1);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
     /* Image Carousel */
@@ -151,6 +216,7 @@
       grid-template-columns: 2fr 1fr;
       gap: 3rem;
       align-items: center;
+      width: 100%;
     }
 
     .about-text h2 {
@@ -201,6 +267,7 @@
       padding: 3rem 2rem;
       background: var(--bg-color, #fafafa);
       border-top: 2px solid rgba(102, 126, 234, 0.1);
+      width: 100%;
     }
 
     body.dark .nav-panels {
@@ -227,6 +294,7 @@
       gap: 1.5rem;
       max-width: 1400px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .panel-card {
@@ -379,6 +447,7 @@
       background: #e8e9f3;
       border-top: 2px solid rgba(102, 126, 234, 0.2);
       overflow: hidden;
+      width: 100%;
     }
 
     body.dark .home-footer {
@@ -440,6 +509,7 @@
       align-items: center;
       text-align: center;
       z-index: 1;
+      width: 100%;
     }
 
     .footer-name {
@@ -642,20 +712,38 @@
         max-width: 250px;
       }
 
-      /* Keep 4x1 grid on tablets */
       .panels-grid {
         grid-template-columns: repeat(4, 1fr);
       }
     }
 
     @media (max-width: 768px) {
+      /* FIXED MOBILE WIDTH */
+      body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .nav-bar {
+        padding: 0.6rem 1rem !important;
+        width: 100%;
+      }
+
       .nav-bar .nav-link {
-        font-size: 0.95rem !important;
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.8rem !important;
+      }
+
+      .nav-bar #theme-toggle {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1.1rem !important;
       }
 
       .carousel-section {
         height: 50vh;
         min-height: 300px;
+        width: 100%;
       }
 
       .carousel-overlay {
@@ -679,6 +767,7 @@
       .about-me-section {
         padding: 2rem 1.5rem;
         gap: 1.5rem;
+        width: 100%;
       }
 
       .about-text h2 {
@@ -691,6 +780,7 @@
 
       .nav-panels {
         padding: 2rem 1.5rem;
+        width: 100%;
       }
 
       .panels-title {
@@ -702,6 +792,7 @@
       .panels-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.2rem;
+        width: 100%;
       }
 
       .panel-card {
@@ -719,6 +810,7 @@
 
       .home-footer {
         padding: 3rem 1.5rem 2rem;
+        width: 100%;
       }
 
       .footer-name {
