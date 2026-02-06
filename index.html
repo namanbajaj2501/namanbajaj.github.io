@@ -142,7 +142,7 @@
       border-radius: 5px;
     }
 
-    /* About Me Section - REDUCED PADDING */
+    /* About Me Section */
     .about-me-section {
       padding: 3rem 2rem;
       max-width: 1200px;
@@ -196,7 +196,7 @@
       object-fit: cover;
     }
 
-    /* Navigation Panels - REDUCED PADDING */
+    /* Navigation Panels */
     .nav-panels {
       padding: 3rem 2rem;
       background: var(--bg-color, #fafafa);
@@ -220,12 +220,12 @@
       color: #e0e0e0;
     }
 
-    /* 2x2 GRID FOR CARDS */
+    /* 4x1 GRID FOR DESKTOP/LAPTOP - 2x2 FOR MOBILE */
     .panels-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -372,7 +372,7 @@
       font-size: 1.1rem;
     }
 
-    /* Footer - REDUCED PADDING */
+    /* Footer */
     .home-footer {
       position: relative;
       padding: 4rem 2rem 2rem;
@@ -641,6 +641,11 @@
         margin: 0 auto;
         max-width: 250px;
       }
+
+      /* Keep 4x1 grid on tablets */
+      .panels-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
@@ -693,9 +698,9 @@
         margin-bottom: 1.5rem;
       }
 
-      /* SINGLE COLUMN ON MOBILE */
+      /* 2x2 GRID ON MOBILE */
       .panels-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.2rem;
       }
 
@@ -705,7 +710,11 @@
       }
 
       .panel-title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+      }
+
+      .panel-link {
+        font-size: 0.9rem;
       }
 
       .home-footer {
