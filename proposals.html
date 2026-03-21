@@ -288,6 +288,7 @@
       width: 100%;
       border-collapse: collapse;
       min-width: 900px;
+      table-layout: fixed; /* <-- enables predictable column widths */
     }
 
     table.proposals-table thead th {
@@ -313,6 +314,7 @@
       vertical-align: top;
       font-size: 0.95rem;
       line-height: 1.45;
+      overflow-wrap: anywhere; /* helps long titles/Co-Is wrap nicely */
     }
 
     body.dark table.proposals-table tbody td {
@@ -326,6 +328,45 @@
     body.dark table.proposals-table tbody tr:hover {
       background: rgba(102, 126, 234, 0.12);
     }
+
+    /* --- Column width tuning (Funding + Observing) --- */
+    /* Funding table: shrink Funding Org, expand Co-Is + Title */
+    table.proposals-table[aria-label="Funding proposals table"] thead th:nth-child(1),
+    table.proposals-table[aria-label="Funding proposals table"] tbody td:nth-child(1) { width: 12%; } /* PI */
+
+    table.proposals-table[aria-label="Funding proposals table"] thead th:nth-child(2),
+    table.proposals-table[aria-label="Funding proposals table"] tbody td:nth-child(2) { width: 22%; } /* Co-Is (more) */
+
+    table.proposals-table[aria-label="Funding proposals table"] thead th:nth-child(3),
+    table.proposals-table[aria-label="Funding proposals table"] tbody td:nth-child(3) { width: 12%; } /* Funding Org (less) */
+
+    table.proposals-table[aria-label="Funding proposals table"] thead th:nth-child(4),
+    table.proposals-table[aria-label="Funding proposals table"] tbody td:nth-child(4) { width: 12%; } /* ID */
+
+    table.proposals-table[aria-label="Funding proposals table"] thead th:nth-child(5),
+    table.proposals-table[aria-label="Funding proposals table"] tbody td:nth-child(5) { width: 32%; } /* Title (more) */
+
+    table.proposals-table[aria-label="Funding proposals table"] thead th:nth-child(6),
+    table.proposals-table[aria-label="Funding proposals table"] tbody td:nth-child(6) { width: 10%; } /* Status */
+
+    /* Observing table: shrink Telescope/Instrument, expand Co-Is + Title */
+    table.proposals-table[aria-label="Observing proposals table"] thead th:nth-child(1),
+    table.proposals-table[aria-label="Observing proposals table"] tbody td:nth-child(1) { width: 12%; } /* PI */
+
+    table.proposals-table[aria-label="Observing proposals table"] thead th:nth-child(2),
+    table.proposals-table[aria-label="Observing proposals table"] tbody td:nth-child(2) { width: 22%; } /* Co-Is (more) */
+
+    table.proposals-table[aria-label="Observing proposals table"] thead th:nth-child(3),
+    table.proposals-table[aria-label="Observing proposals table"] tbody td:nth-child(3) { width: 12%; } /* Telescope/Instrument (less) */
+
+    table.proposals-table[aria-label="Observing proposals table"] thead th:nth-child(4),
+    table.proposals-table[aria-label="Observing proposals table"] tbody td:nth-child(4) { width: 12%; } /* ID */
+
+    table.proposals-table[aria-label="Observing proposals table"] thead th:nth-child(5),
+    table.proposals-table[aria-label="Observing proposals table"] tbody td:nth-child(5) { width: 32%; } /* Title (more) */
+
+    table.proposals-table[aria-label="Observing proposals table"] thead th:nth-child(6),
+    table.proposals-table[aria-label="Observing proposals table"] tbody td:nth-child(6) { width: 10%; } /* Status */
 
     .empty-state {
       text-align: center;
@@ -711,7 +752,4 @@ setOptions(
 function applyObservingFilter() {
   const selected = observingFilter.value;
   const filtered = observingProposals.filter(p => selected === "all" || p.telescope === selected);
-  renderTable(observingBody, observingEmpty, filtered);
-}
-
-*`
+  renderTable(observing*`
