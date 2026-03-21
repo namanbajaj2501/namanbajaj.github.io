@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Proposals | Naman Bajaj</title>
-  <meta name="description" content="Research proposals by Naman Bajaj, astronomer studying planet formation and protoplanetary disks.">
+  <meta name="description" content="Funding and observing proposals by Naman Bajaj, astronomer studying planet formation and protoplanetary disks.">
   <meta name="author" content="Naman Bajaj">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/style.css">
@@ -163,11 +163,52 @@
       display: inline-block;
     }
 
+    .section-subtitle {
+      margin: 0.25rem 0 0;
+      color: var(--text-color, #444);
+      opacity: 0.85;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 900px;
+    }
+    body.dark .section-subtitle { color: #d7d7d7; opacity: 0.85; }
+
+    /* Section Divider (reuse style idea from publications.html) */
+    .section-divider {
+      margin: 2.2rem 0 1.5rem;
+      padding: 1.4rem 1.5rem;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.06) 0%, rgba(118, 75, 162, 0.06) 100%);
+      border-radius: 12px;
+      border-left: 5px solid #667eea;
+    }
+    body.dark .section-divider {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.14) 0%, rgba(118, 75, 162, 0.12) 100%);
+      border-left-color: #a0b4ff;
+    }
+    .section-divider h3 {
+      margin: 0 0 0.4rem 0;
+      font-size: 1.55rem;
+      color: #667eea;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    body.dark .section-divider h3 { color: #a0b4ff; }
+
+    .section-divider p {
+      margin: 0;
+      font-size: 1.0rem;
+      line-height: 1.65;
+      opacity: 0.9;
+      color: var(--text-color, #333);
+    }
+    body.dark .section-divider p { color: #e0e0e0; opacity: 0.9; }
+
     /* Filter Controls (match publications.html style) */
     .filter-controls {
       display: flex;
       gap: 1rem;
-      margin: 1.8rem 0 2rem;
+      margin: 1.2rem 0 1.5rem;
       padding: 1.3rem;
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
       border-radius: 12px;
@@ -241,7 +282,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0b4ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     }
 
-    /* Proposals Table */
+    /* Tables (shared) */
     .proposals-table-wrap {
       width: 100%;
       overflow-x: auto;
@@ -258,7 +299,7 @@
     .proposals-table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 980px; /* keeps 6 columns readable */
+      min-width: 980px;
     }
 
     .proposals-table thead th {
@@ -293,6 +334,8 @@
 
     .proposals-table tbody tr:hover td { background: rgba(102, 126, 234, 0.06); }
     body.dark .proposals-table tbody tr:hover td { background: rgba(102, 126, 234, 0.14); }
+
+    .nowrap { white-space: nowrap; }
 
     .empty-state {
       text-align: center;
@@ -468,7 +511,6 @@
       color: #e0e0e0;
       border-color: rgba(102, 126, 234, 0.4);
     }
-
     body.dark .search-box:focus { border-color: #a0b4ff; }
     .search-box::placeholder { color: #999; }
 
@@ -514,7 +556,11 @@
       color: #a0b4ff;
     }
 
-    .footer-link svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
 
     .contact-btn {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
@@ -543,43 +589,20 @@
     /* Responsive */
     @media (max-width: 768px) {
       body { max-width: 100vw; overflow-x: hidden; }
-
       .nav-bar {
         padding: 1rem 1.5rem !important;
         justify-content: space-between;
         position: relative;
       }
-
       .nav-links { display: none !important; }
       .mobile-menu-btn { display: flex; }
-
       main { padding: 1.5rem; }
       .proposals h2 { font-size: 2rem; }
-
-      .filter-controls {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem;
-      }
-
+      .filter-controls { flex-direction: column; align-items: stretch; padding: 1rem; }
       .filter-group { min-width: 100%; }
-
-      .footer-nav {
-        flex-direction: column;
-        gap: 1.2rem;
-        margin-bottom: 1.8rem;
-      }
-
-      .footer-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
-      }
-
-      .footer-link {
-        width: 100%;
-        justify-content: center;
-      }
+      .footer-nav { flex-direction: column; gap: 1.2rem; margin-bottom: 1.8rem; }
+      .footer-links { flex-direction: column; width: 100%; gap: 1rem; }
+      .footer-link { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -592,6 +615,7 @@
     <a href="about.html" class="nav-link">About</a>
     <a href="research.html" class="nav-link">Research</a>
     <a href="publications.html" class="nav-link">Publications</a>
+    <a href="proposals.html" class="nav-link">Proposals</a>
     <a href="outreach.html" class="nav-link">Outreach</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
@@ -607,72 +631,92 @@
     <a href="about.html" class="nav-link">About</a>
     <a href="research.html" class="nav-link">Research</a>
     <a href="publications.html" class="nav-link">Publications</a>
+    <a href="proposals.html" class="nav-link">Proposals</a>
     <a href="outreach.html" class="nav-link">Outreach</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 </nav>
 
 <main>
-  <section class="section proposals" id="proposals">
+  <section class="section proposals">
     <h2>Proposals</h2>
+    <p class="section-subtitle">
+      A curated list of funding and observing proposals. Use the instrument selector to filter observing proposals (default: All).
+    </p>
 
-    <div class="filter-controls">
+    <!-- ===================== -->
+    <!-- Funding Proposals -->
+    <!-- ===================== -->
+    <div class="section-divider">
+      <h3>Funding Proposals</h3>
+      <p>Grants, fellowships, and research funding proposals.</p>
+    </div>
+
+    <div class="proposals-table-wrap">
+      <table class="proposals-table" aria-label="Funding proposals table">
+        <thead>
+          <tr>
+            <th>PI</th>
+            <th>Co-Is</th>
+            <th>Funding Org</th>
+            <th class="nowrap">ID</th>
+            <th>Title</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="funding-proposals-body">
+          <!-- Example row(s) – replace with your real proposals -->
+          <tr>
+            <td>Bajaj, Naman</td>
+            <td>—</td>
+            <td>NASA</td>
+            <td class="nowrap">FINESST</td>
+            <td>Example funding proposal title goes here</td>
+            <td>Funded</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Observing Proposals -->
+    <!-- ===================== -->
+    <div class="section-divider" style="margin-top: 2.6rem;">
+      <h3>Observing Proposals</h3>
+      <p>Observing proposals and programs (filter by telescope/instrument).</p>
+    </div>
+
+    <div class="filter-controls" aria-label="Observing proposals filter controls">
       <div class="filter-group">
-        <label for="telescope-filter">Telescope/Instrument</label>
-        <select id="telescope-filter" class="filter-select">
-          <option value="all">All</option>
-          <option value="JWST/NIRSpec">JWST/NIRSpec</option>
-          <option value="JWST/MIRI">JWST/MIRI</option>
-          <option value="ALMA">ALMA</option>
+        <label for="instrument-filter">Filter by Telescope/Instrument</label>
+        <select id="instrument-filter" class="filter-select">
+          <option value="all">All Telescopes/Instruments</option>
         </select>
       </div>
     </div>
 
     <div class="proposals-table-wrap">
-      <table class="proposals-table" aria-label="Proposals table">
+      <table class="proposals-table" aria-label="Observing proposals table">
         <thead>
           <tr>
             <th>PI</th>
             <th>Co-Is</th>
             <th>Telescope/Instrument</th>
-            <th>ID</th>
+            <th class="nowrap">ID</th>
             <th>Title</th>
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
-          <tr data-telescope="JWST/NIRSpec">
-            <td>Example PI</td>
-            <td>Co-I 1, Co-I 2</td>
-            <td>JWST/NIRSpec</td>
-            <td>001</td>
-            <td>Example Proposal</td>
-            <td>Open</td>
-          </tr>
-          <tr data-telescope="JWST/MIRI">
-            <td>Example PI 2</td>
-            <td>Co-I A, Co-I B</td>
-            <td>JWST/MIRI</td>
-            <td>002</td>
-            <td>Mid-IR Disk Wind Survey</td>
-            <td>Submitted</td>
-          </tr>
-          <tr data-telescope="ALMA">
-            <td>Example PI 3</td>
-            <td>Co-I X, Co-I Y</td>
-            <td>ALMA</td>
-            <td>003</td>
-            <td>Gas Dispersal in Nearby Star-forming Regions</td>
-            <td>Accepted</td>
-          </tr>
-          <!-- Additional rows can be added here -->
+        <tbody id="observing-proposals-body">
+          <!-- Populated by JS -->
         </tbody>
       </table>
     </div>
 
-    <div class="empty-state" id="empty-state">
-      No proposals match your filter
+    <div class="empty-state" id="observing-empty-state">
+      No observing proposals match your filter
     </div>
+
   </section>
 </main>
 
@@ -680,13 +724,17 @@
   <div class="footer-constellation" id="constellation"></div>
   <div class="footer-container">
     <h2 class="footer-name">Naman Bajaj</h2>
-    <p class="footer-tagline">Whether you're interested in collaborating on research, discussing science outreach, or just want to chat about planet formation—I’d love to hear from you.</p>
+    <p class="footer-tagline">
+      Whether you're interested in collaborating on research, discussing science outreach,
+      or just want to chat about planet formation—I’d love to hear from you.
+    </p>
 
     <nav class="footer-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="research.html">Research</a>
       <a href="publications.html">Publications</a>
+      <a href="proposals.html">Proposals</a>
       <a href="outreach.html">Outreach</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -696,12 +744,12 @@
     </div>
 
     <div class="footer-links">
-      <a href="https://github.com/naman-bajaj" target="_blank" class="footer-link" rel="noopener">
+      <a href="https://github.com/naman-bajaj" target="_blank" class="footer-link" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         GitHub
       </a>
 
-      <a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" class="footer-link" rel="noopener">
+      <a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" class="footer-link" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         LinkedIn
       </a>
@@ -731,7 +779,7 @@
     });
   });
 
-  // Theme toggle
+  // Theme toggle (consistent with other pages)
   const toggle = document.getElementById("theme-toggle");
   if (localStorage.theme === "dark") document.body.classList.add("dark");
   toggle?.addEventListener("click", () => {
@@ -739,66 +787,16 @@
     localStorage.theme = document.body.classList.contains("dark") ? "dark" : "light";
   });
 
-  // Active nav highlighting
+  // Active nav link highlight
   const links = document.querySelectorAll('.nav-link');
   links.forEach(link => {
     if (link.href === window.location.href) link.classList.add('active');
   });
 
-  // Proposals filtering
-  function filterProposals() {
-    const filterValue = document.getElementById('telescope-filter').value;
-    const rows = document.querySelectorAll('#proposals table tbody tr');
-    let visibleCount = 0;
-
-    rows.forEach(row => {
-      const rowTelescope = row.getAttribute('data-telescope') || row.cells[2]?.textContent?.trim() || "";
-      const show = (filterValue === 'all' || rowTelescope === filterValue);
-      row.style.display = show ? '' : 'none';
-      if (show) visibleCount++;
-    });
-
-    const emptyState = document.getElementById('empty-state');
-    if (visibleCount === 0) emptyState.classList.add('show');
-    else emptyState.classList.remove('show');
-  }
-  document.getElementById('telescope-filter').addEventListener('change', filterProposals);
-  filterProposals();
-
-  // Footer search (kept consistent with other pages)
-  document.getElementById('searchBox').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const searchTerm = e.target.value.trim().toLowerCase();
-      if (searchTerm) {
-        const pages = [
-          { url: 'index.html', title: 'Home', keywords: ['home', 'naman bajaj', 'astronomer', 'planet formation', 'jwst', 'nasa', 'protoplanetary disk', 'disk winds', 'photoevaporation'] },
-          { url: 'about.html', title: 'About Me', keywords: ['about', 'biography', 'education', 'background', 'india', 'university of arizona', 'phd', 'mechanical engineering', 'astronomy'] },
-          { url: 'research.html', title: 'Research', keywords: ['research', 'disk evolution', 'disk dispersal', 'circumbinary', 'jwst', 'miri', 'nirspec', 'photoevaporation', 'mhd winds', 'jets', 'tcha', 'binary'] },
-          { url: 'publications.html', title: 'Publications', keywords: ['publications', 'papers', 'nature astronomy', 'astronomical journal', 'astrophysical journal', 'first author', 'ads', 'pascucci', 'bajaj'] },
-          { url: 'outreach.html', title: 'Outreach', keywords: ['outreach', 'podcast', 'school', 'press', 'media', 'science communication', 'education', 'seti'] },
-          { url: 'contact.html', title: 'Contact', keywords: ['contact', 'email', 'collaboration', 'get in touch', 'reach out'] }
-        ];
-
-        const matches = pages.filter(page =>
-          page.keywords.some(keyword => keyword.includes(searchTerm)) ||
-          page.title.toLowerCase().includes(searchTerm)
-        );
-
-        if (matches.length > 0) {
-          window.location.href = matches[0].url;
-        } else {
-          const googleSearch = confirm(`No direct match found for "${searchTerm}".\n\nWould you like to search on Google instead?`);
-          if (googleSearch) {
-            window.open(`https://www.google.com/search?q=site:naman-bajaj.github.io ${encodeURIComponent(searchTerm)}`, '_blank');
-          }
-        }
-      }
-    }
-  });
-
-  // Constellation effect
+  // Constellation background (copied pattern from other pages)
   function createConstellation() {
     const constellation = document.getElementById('constellation');
+    if (!constellation) return;
     const width = constellation.offsetWidth;
     const height = constellation.offsetHeight;
     constellation.innerHTML = '';
@@ -822,7 +820,6 @@
         const dx = dots[j].x - dots[i].x;
         const dy = dots[j].y - dots[i].y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-
         if (distance < 250) {
           const line = document.createElement('div');
           line.className = 'constellation-line';
@@ -837,5 +834,100 @@
       }
     }
   }
+  window.addEventListener('load', createConstellation);
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => { createConstellation(); }, 250);
+  });
 
-  window.add*
+  // Footer search (consistent with other pages)
+  document.getElementById('searchBox').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const searchTerm = e.target.value.trim().toLowerCase();
+      if (searchTerm) {
+        const pages = [
+          { url: 'index.html', title: 'Home', keywords: ['home','naman bajaj','astronomer','planet formation','jwst','nasa','protoplanetary disk','disk winds','photoevaporation'] },
+          { url: 'about.html', title: 'About Me', keywords: ['about','biography','education','background','india','university of arizona','phd','mechanical engineering','astronomy'] },
+          { url: 'research.html', title: 'Research', keywords: ['research','disk evolution','disk dispersal','circumbinary','jwst','miri','nirspec','photoevaporation','mhd winds','jets','tcha','binary'] },
+          { url: 'publications.html', title: 'Publications', keywords: ['publications','papers','nature astronomy','astronomical journal','astrophysical journal','first author','ads','pascucci','bajaj'] },
+          { url: 'proposals.html', title: 'Proposals', keywords: ['proposals','funding','observing','telescope','instrument','jwst','alma','hst','proposal','program'] },
+          { url: 'outreach.html', title: 'Outreach', keywords: ['outreach','podcast','school','press','media','science communication','education','seti'] },
+          { url: 'contact.html', title: 'Contact', keywords: ['contact','email','collaboration','get in touch','reach out'] }
+        ];
+
+        const matches = pages.filter(page => {
+          return page.keywords.some(keyword => keyword.includes(searchTerm)) ||
+            page.title.toLowerCase().includes(searchTerm);
+        });
+
+        if (matches.length > 0) {
+          window.location.href = matches[0].url;
+        } else {
+          const googleSearch = confirm(`No direct match found for "${searchTerm}".\n\nWould you like to search on Google instead?`);
+          if (googleSearch) {
+            window.open(`https://www.google.com/search?q=site:naman-bajaj.github.io ${encodeURIComponent(searchTerm)}`, '_blank');
+          }
+        }
+      }
+    }
+  });
+
+  // ============================
+  // Observing proposals data + filter
+  // ============================
+  const observingProposals = [
+    // Replace these examples with your actual observing proposals
+    { pi: "Bajaj, Naman", cois: "Pascucci, I.; Gorti, U.", instrument: "JWST/MIRI", id: "XXXX", title: "Example observing proposal title (MIRI)", status: "Accepted" },
+    { pi: "Bajaj, Naman", cois: "Beck, T.; Edwards, S.", instrument: "JWST/NIRSpec", id: "YYYY", title: "Example observing proposal title (NIRSpec)", status: "Submitted" },
+    { pi: "Bajaj, Naman", cois: "—", instrument: "ALMA", id: "ZZZZ", title: "Example observing proposal title (ALMA)", status: "Not Accepted" }
+  ];
+
+  const instrumentFilter = document.getElementById("instrument-filter");
+  const observingBody = document.getElementById("observing-proposals-body");
+  const observingEmptyState = document.getElementById("observing-empty-state");
+
+  function uniqueSorted(arr) {
+    return [...new Set(arr)].sort((a, b) => a.localeCompare(b));
+  }
+
+  function populateInstrumentOptions() {
+    const instruments = uniqueSorted(observingProposals.map(p => p.instrument).filter(Boolean));
+    instruments.forEach(inst => {
+      const opt = document.createElement("option");
+      opt.value = inst;
+      opt.textContent = inst;
+      instrumentFilter.appendChild(opt);
+    });
+  }
+
+  function renderObservingTable() {
+    const selected = instrumentFilter.value;
+    const rows = observingProposals.filter(p => selected === "all" || p.instrument === selected);
+
+    observingBody.innerHTML = "";
+    rows.forEach(p => {
+      const tr = document.createElement("tr");
+      tr.dataset.instrument = p.instrument || "";
+      tr.innerHTML = `
+        <td>${p.pi || ""}</td>
+        <td>${p.cois || "—"}</td>
+        <td>${p.instrument || ""}</td>
+        <td class="nowrap">${p.id || ""}</td>
+        <td>${p.title || ""}</td>
+        <td>${p.status || ""}</td>
+      `;
+      observingBody.appendChild(tr);
+    });
+
+    if (rows.length === 0) observingEmptyState.classList.add("show");
+    else observingEmptyState.classList.remove("show");
+  }
+
+  populateInstrumentOptions();
+  renderObservingTable();
+  instrumentFilter.addEventListener("change", renderObservingTable);
+</script>
+
+</body>
+</html>
