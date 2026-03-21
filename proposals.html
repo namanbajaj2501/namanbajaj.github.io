@@ -173,7 +173,7 @@
     }
     body.dark .section-subtitle { color: #d7d7d7; opacity: 0.85; }
 
-    /* Section Divider (reuse style idea from publications.html) */
+    /* Section Divider */
     .section-divider {
       margin: 2.2rem 0 1.5rem;
       padding: 1.4rem 1.5rem;
@@ -204,7 +204,7 @@
     }
     body.dark .section-divider p { color: #e0e0e0; opacity: 0.9; }
 
-    /* Filter Controls (match publications.html style) */
+    /* Filter Controls */
     .filter-controls {
       display: flex;
       gap: 1rem;
@@ -282,7 +282,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0b4ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     }
 
-    /* Tables (shared) */
+    /* Tables */
     .proposals-table-wrap {
       width: 100%;
       overflow-x: auto;
@@ -353,7 +353,7 @@
       opacity: 0.5;
     }
 
-    /* Footer (match other pages) */
+    /* Footer */
     .home-footer {
       position: relative;
       padding: 3.5rem 2rem 2rem;
@@ -617,15 +617,14 @@
     <a href="publications.html" class="nav-link">Publications</a>
     <a href="proposals.html" class="nav-link">Proposals</a>
     <a href="outreach.html" class="nav-link">Outreach</a>
-    <a href="resources.html" class="nav-link">Resources</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 
-  <button class="mobile-menu-btn" id="mobileMenuBtn">
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 
-  <button id="theme-toggle">🌓</button>
+  <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
 
   <div class="mobile-nav-links" id="mobileNavLinks">
     <a href="index.html" class="nav-link">Home</a>
@@ -634,7 +633,6 @@
     <a href="publications.html" class="nav-link">Publications</a>
     <a href="proposals.html" class="nav-link">Proposals</a>
     <a href="outreach.html" class="nav-link">Outreach</a>
-    <a href="resources.html" class="nav-link">Resources</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 </nav>
@@ -646,9 +644,7 @@
       A curated list of funding and observing proposals. Use the instrument selector to filter observing proposals (default: All).
     </p>
 
-    <!-- ===================== -->
     <!-- Funding Proposals -->
-    <!-- ===================== -->
     <div class="section-divider">
       <h3>Funding Proposals</h3>
       <p>Grants, fellowships, and research funding proposals.</p>
@@ -667,7 +663,6 @@
           </tr>
         </thead>
         <tbody id="funding-proposals-body">
-          <!-- Example row(s) – replace with your real proposals -->
           <tr>
             <td>Bajaj, Naman</td>
             <td>—</td>
@@ -680,9 +675,7 @@
       </table>
     </div>
 
-    <!-- ===================== -->
     <!-- Observing Proposals -->
-    <!-- ===================== -->
     <div class="section-divider" style="margin-top: 2.6rem;">
       <h3>Observing Proposals</h3>
       <p>Observing proposals and programs (filter by telescope/instrument).</p>
@@ -709,9 +702,7 @@
             <th>Status</th>
           </tr>
         </thead>
-        <tbody id="observing-proposals-body">
-          <!-- Populated by JS -->
-        </tbody>
+        <tbody id="observing-proposals-body"></tbody>
       </table>
     </div>
 
@@ -738,7 +729,6 @@
       <a href="publications.html">Publications</a>
       <a href="proposals.html">Proposals</a>
       <a href="outreach.html">Outreach</a>
-      <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
 
@@ -771,18 +761,18 @@
   // Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileNavLinks = document.getElementById('mobileNavLinks');
-  mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn?.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
     mobileNavLinks.classList.toggle('active');
   });
   document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenuBtn.classList.remove('active');
-      mobileNavLinks.classList.remove('active');
+      mobileMenuBtn?.classList.remove('active');
+      mobileNavLinks?.classList.remove('active');
     });
   });
 
-  // Theme toggle (consistent with other pages)
+  // Theme toggle
   const toggle = document.getElementById("theme-toggle");
   if (localStorage.theme === "dark") document.body.classList.add("dark");
   toggle?.addEventListener("click", () => {
@@ -790,13 +780,22 @@
     localStorage.theme = document.body.classList.contains("dark") ? "dark" : "light";
   });
 
-  // Active nav link highlight
-  const links = document.querySelectorAll('.nav-link');
-  links.forEach(link => {
-    if (link.href === window.location.href) link.classList.add('active');
+  // Active nav link highlight (more robust than exact href match)
+  function normalizePathname(url) {
+    try {
+      const u = new URL(url, window.location.origin);
+      return u.pathname.replace(/\/+$/, '');
+    } catch {
+      return (url || '').replace(/\/+$/, '');
+    }
+  }
+  const currentPath = normalizePathname(window.location.href);
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const linkPath = normalizePathname(link.href);
+    if (linkPath === currentPath) link.classList.add('active');
   });
 
-  // Constellation background (copied pattern from other pages)
+  // Constellation background
   function createConstellation() {
     const constellation = document.getElementById('constellation');
     if (!constellation) return;
@@ -844,8 +843,9 @@
     resizeTimeout = setTimeout(() => { createConstellation(); }, 250);
   });
 
-  // Footer search (consistent with other pages)
-  document.getElementById('searchBox').addEventListener('keypress', (e) => {
+  // Footer search (guarded)
+  const searchBox = document.getElementById('searchBox');
+  searchBox?.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       const searchTerm = e.target.value.trim().toLowerCase();
       if (searchTerm) {
@@ -876,11 +876,8 @@
     }
   });
 
-  // ============================
   // Observing proposals data + filter
-  // ============================
   const observingProposals = [
-    // Replace these examples with your actual observing proposals
     { pi: "Bajaj, Naman", cois: "Pascucci, I.; Gorti, U.", instrument: "JWST/MIRI", id: "XXXX", title: "Example observing proposal title (MIRI)", status: "Accepted" },
     { pi: "Bajaj, Naman", cois: "Beck, T.; Edwards, S.", instrument: "JWST/NIRSpec", id: "YYYY", title: "Example observing proposal title (NIRSpec)", status: "Submitted" },
     { pi: "Bajaj, Naman", cois: "—", instrument: "ALMA", id: "ZZZZ", title: "Example observing proposal title (ALMA)", status: "Not Accepted" }
@@ -895,6 +892,7 @@
   }
 
   function populateInstrumentOptions() {
+    if (!instrumentFilter) return;
     const instruments = uniqueSorted(observingProposals.map(p => p.instrument).filter(Boolean));
     instruments.forEach(inst => {
       const opt = document.createElement("option");
@@ -905,13 +903,14 @@
   }
 
   function renderObservingTable() {
+    if (!instrumentFilter || !observingBody || !observingEmptyState) return;
+
     const selected = instrumentFilter.value;
     const rows = observingProposals.filter(p => selected === "all" || p.instrument === selected);
 
     observingBody.innerHTML = "";
     rows.forEach(p => {
       const tr = document.createElement("tr");
-      tr.dataset.instrument = p.instrument || "";
       tr.innerHTML = `
         <td>${p.pi || ""}</td>
         <td>${p.cois || "—"}</td>
@@ -929,7 +928,7 @@
 
   populateInstrumentOptions();
   renderObservingTable();
-  instrumentFilter.addEventListener("change", renderObservingTable);
+  instrumentFilter?.addEventListener("change", renderObservingTable);
 </script>
 
 </body>
