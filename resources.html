@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resources | Naman Bajaj</title>
+  <meta name="description" content="Resources and curated links for research internships, workshops, and Ph.D. admissions.">
+  <meta name="author" content="Naman Bajaj">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    /* Keep this page simple and consistent with existing pages */
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; overflow-x: hidden; width: 100%; }
+
+    /* Navigation Bar (consistent with other pages) */
+    .nav-bar {
+      position: sticky !important;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+      border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+      padding: 0.8rem 2rem !important;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    body.dark .nav-bar {
+      background: rgba(26, 26, 26, 0.85) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+      border-bottom-color: rgba(102, 126, 234, 0.2) !important;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-bar .nav-link {
+      font-size: 1.1rem !important;
+      font-weight: 600 !important;
+      padding: 0.6rem 1.2rem !important;
+      border-radius: 10px !important;
+      transition: all 0.3s ease !important;
+      position: relative;
+      color: #333 !important;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    body.dark .nav-bar .nav-link { color: #e0e0e0 !important; }
+
+    .nav-bar .nav-link:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-bar .nav-link.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      color: white !important;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    body.dark .nav-bar .nav-link.active {
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+    }
+
+    .nav-bar #theme-toggle {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      border: none !important;
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 50% !important;
+      font-size: 1.3rem !important;
+      cursor: pointer;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    .nav-bar #theme-toggle:hover {
+      transform: rotate(180deg) scale(1.1);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .mobile-menu-btn span {
+      width: 22px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    .mobile-nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      z-index: 1001;
+    }
+
+    body.dark .mobile-nav-links { background: rgba(26, 26, 26, 0.95); }
+    .mobile-nav-links.active { display: flex; max-height: 500px; }
+    .mobile-nav-links .nav-link { width: 100%; text-align: center; padding: 0.8rem 1rem !important; }
+
+    /* Main Content */
+    main {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .resources h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+
+    .resources-intro {
+      margin-top: 0.5rem;
+      color: var(--text-color, #555);
+      opacity: 0.95;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    body.dark .resources-intro { color: #b0b0b0; }
+
+    .resource-section {
+      margin-top: 2rem;
+      padding: 1.4rem 1.4rem;
+      border-radius: 14px;
+      border: 2px solid rgba(102, 126, 234, 0.12);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.04) 0%, rgba(118, 75, 162, 0.03) 100%);
+    }
+    body.dark .resource-section {
+      border-color: rgba(102, 126, 234, 0.22);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.10) 0%, rgba(118, 75, 162, 0.08) 100%);
+    }
+
+    .resource-section h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.35rem;
+      color: #333;
+    }
+    body.dark .resource-section h3 { color: #e0e0e0; }
+
+    .resource-section p {
+      margin: 0 0 1rem 0;
+      color: var(--text-color, #555);
+      line-height: 1.7;
+    }
+    body.dark .resource-section p { color: #b0b0b0; }
+
+    .resource-links {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .resource-links li {
+      margin: 0.55rem 0;
+      line-height: 1.6;
+    }
+
+    .resource-links a {
+      color: #667eea;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(102, 126, 234, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .resource-links a:hover {
+      color: #764ba2;
+      border-bottom-color: rgba(118, 75, 162, 0.6);
+    }
+
+    body.dark .resource-links a {
+      color: #a0b4ff;
+      border-bottom-color: rgba(160, 180, 255, 0.35);
+    }
+
+    body.dark .resource-links a:hover {
+      color: #c7d2ff;
+      border-bottom-color: rgba(199, 210, 255, 0.65);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .mobile-menu-btn { display: flex; }
+      .nav-bar { justify-content: space-between; padding: 1rem 1.5rem !important; }
+      #theme-toggle { margin-left: 0; }
+      main { padding: 1.5rem; }
+      .resources h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="nav-bar">
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="research.html" class="nav-link">Research</a>
+    <a href="publications.html" class="nav-link">Publications</a>
+    <a href="proposals.html" class="nav-link">Proposals</a>
+    <a href="resources.html" class="nav-link">Resources</a>
+    <a href="outreach.html" class="nav-link">Outreach</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <span></span><span></span><span></span>
+  </button>
+
+  <button id="theme-toggle">🌓</button>
+
+  <div class="mobile-nav-links" id="mobileNavLinks">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="research.html" class="nav-link">Research</a>
+    <a href="publications.html" class="nav-link">Publications</a>
+    <a href="proposals.html" class="nav-link">Proposals</a>
+    <a href="resources.html" class="nav-link">Resources</a>
+    <a href="outreach.html" class="nav-link">Outreach</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <section class="section resources">
+    <h2>Resources</h2>
+    <p class="resources-intro">
+      A small set of curated links I find useful. Each section is meant to be quick to scan and easy to navigate.
+    </p>
+
+    <div class="resource-section" id="internships-schools-workshops">
+      <h3>Research Internships/ Schools/ Workshops</h3>
+      <p>
+        <!-- Replace this text with your short description. -->
+        A few good starting points for finding internships, summer schools, and workshops in astronomy/planet formation.
+      </p>
+      <ul class="resource-links">
+        <!-- Replace / add links -->
+        <li><a href="https://example.com" target="_blank" rel="noopener">Example curated list (replace)</a> — short note about what it contains.</li>
+      </ul>
+    </div>
+
+    <div class="resource-section" id="phd-admissions">
+      <h3>Ph.D. Positions and Admissions</h3>
+      <p>
+        <!-- Replace this text with your short description. -->
+        Links to pages that aggregate Ph.D. openings and general admissions guidance/timelines.
+      </p>
+      <ul class="resource-links">
+        <!-- Replace / add links -->
+        <li><a href="https://example.com" target="_blank" rel="noopener">Example Ph.D. openings list (replace)</a> — short note about region/field coverage.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="home-footer">
+  <div class="footer-container">
+    <h2 class="footer-name">Naman Bajaj</h2>
+    <p class="footer-tagline">
+      Whether you're interested in collaborating on research, discussing science outreach, or just want to chat about planet formation—I'd love to hear from you.
+    </p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="proposals.html">Proposals</a>
+      <a href="resources.html">Resources</a>
+      <a href="outreach.html">Outreach</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="search-container">
+      <input type="text" class="search-box" id="searchBox" placeholder="Search this website...">
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Naman Bajaj • PhD Candidate, University of Arizona</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">Lunar and Planetary Laboratory • NASA FINESST Fellow</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNavLinks = document.getElementById('mobileNavLinks');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mobileNavLinks.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn.classList.remove('active');
+      mobileNavLinks.classList.remove('active');
+    });
+  });
+
+  // Theme toggle (same behavior as other pages)
+  const toggle = document.getElementById("theme-toggle");
+  if (localStorage.theme === "dark") document.body.classList.add("dark");
+  toggle?.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.theme = document.body.classList.contains("dark") ? "dark" : "light";
+  });
+
+  // Mark active link
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    if (link.href === window.location.href) link.classList.add('active');
+  });
+
+  // Simple search behavior (keep consistent with your other pages; update keywords later if you want)
+  document.getElementById('searchBox')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const searchTerm = e.target.value.trim().toLowerCase();
+      if (!searchTerm) return;
+      const pages = [
+        { url: 'index.html', title: 'Home', keywords: ['home', 'naman bajaj'] },
+        { url: 'about.html', title: 'About Me', keywords: ['about', 'biography'] },
+        { url: 'research.html', title: 'Research', keywords: ['research', 'jwst'] },
+        { url: 'publications.html', title: 'Publications', keywords: ['publications', 'papers'] },
+        { url: 'proposals.html', title: 'Proposals', keywords: ['proposals', 'telescope'] },
+        { url: 'resources.html', title: 'Resources', keywords: ['resources', 'internships', 'phd', 'admissions', 'workshops'] },
+        { url: 'outreach.html', title: 'Outreach', keywords: ['outreach'] },
+        { url: 'contact.html', title: 'Contact', keywords: ['contact', 'email'] },
+      ];
+      const matches = pages.filter(page =>
+        page.keywords.some(k => k.includes(searchTerm)) || page.title.toLowerCase().includes(searchTerm)
+      );
+      if (matches.length > 0) window.location.href = matches[0].url;
+      else alert(`No direct match found for "${searchTerm}".`);
+    }
+  });
+</script>
+
+</body>
+</html>
