@@ -642,7 +642,7 @@
   <section class="section proposals">
     <h2>Proposals</h2>
     <p class="subtitle">
-      Selected funding and observing proposals.
+      Selected funding and observing proposals. Use the Telescope/Instrument dropdown to filter.
     </p>
 
     <h3 class="proposal-section-title">Funding Proposals</h3>
@@ -839,16 +839,21 @@ links.forEach(link=>{
 });
 
 /* -----------------------
-   Proposals page logic (unchanged)
+   Proposals page logic
 ------------------------ */
 const fundingProposals = [
-  // { pi: "N. Bajaj", cois: "A. Coauthor; B. Coauthor", telescope: "NASA FINESST", id: "FINESST-2025", title: "Title here", status: "Awarded" },
+  { pi: "N. Bajaj", cois: "A. Coauthor; B. Coauthor", telescope: "NASA FINESST", id: "FINESST-2025", title: "Disk winds and dispersal in planet-forming systems", status: "Awarded" },
+  { pi: "N. Bajaj", cois: "I. Pascucci; C. Collaborator", telescope: "NASA XRP", id: "XRP-2026-001", title: "JWST-era constraints on disk evolution models", status: "Submitted" },
+  { pi: "N. Bajaj", cois: "D. Researcher; E. Scientist", telescope: "NSF AAG", id: "AAG-2026-123", title: "Linking gas dispersal to planet formation timescales", status: "Pending" },
 ];
 
 const observingProposals = [
-  // { pi: "N. Bajaj", cois: "I. Pascucci; ...", telescope: "JWST/NIRSpec", id: "JWST-12345", title: "Title here", status: "Accepted" },
+  { pi: "N. Bajaj", cois: "I. Pascucci; S. Edwards", telescope: "JWST/NIRSpec", id: "JWST-55555", title: "Tracing warm gas in transitional disks with NIRSpec", status: "Accepted" },
+  { pi: "N. Bajaj", cois: "K. Pontoppidan; L. Test", telescope: "JWST/MIRI", id: "JWST-66666", title: "Mid-IR diagnostics of disk winds and inner holes", status: "Submitted" },
+  { pi: "N. Bajaj", cois: "A. Coauthor; B. Coauthor", telescope: "VLT/CRIRES+", id: "ESO-0101.C-0001", title: "High-resolution CO to probe inner disk kinematics", status: "Completed" },
 ];
 
+/* Utilities */
 function uniqueSorted(arr) {
   return [...new Set(arr)].sort((a, b) => a.localeCompare(b));
 }
