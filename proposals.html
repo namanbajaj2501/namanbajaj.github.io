@@ -146,7 +146,8 @@
     /* Main Content */
     main {
       padding: 2rem;
-      padding-top: 1.25rem;
+      padding-top: 0.75rem; /* CHANGED: reduce whitespace below navbar */
+      padding-bottom: 1.25rem; /* CHANGED: reduce whitespace before footer */
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -155,7 +156,7 @@
     .proposals h2 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
-      margin-top: 0;
+      margin-top: 0; /* ensures no extra space above title */
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -327,9 +328,7 @@
     .empty-state.show { display: block; }
 
     /* Bold highlight for name */
-    .highlight-author {
-      font-weight: 800;
-    }
+    .highlight-author { font-weight: 800; }
 
     /* Footer (MATCH about.html) */
     .home-footer {
@@ -339,7 +338,7 @@
       border-top: 2px solid rgba(102, 126, 234, 0.2);
       overflow: hidden;
       width: 100%;
-      margin-top: 3rem;
+      margin-top: 1.5rem; /* CHANGED: reduce whitespace above footer */
     }
 
     body.dark .home-footer {
@@ -565,7 +564,7 @@
       color: #999;
     }
 
-    /* Responsive (MATCH about.html footer behavior) */
+    /* Responsive */
     @media (max-width: 768px) {
       body { max-width: 100vw; overflow-x: hidden; }
 
@@ -578,7 +577,8 @@
       .nav-links { display: none !important; }
       .mobile-menu-btn { display: flex; }
 
-      main { padding: 1.5rem; padding-top: 1rem; }
+      main { padding: 1.5rem; padding-top: 0.5rem; padding-bottom: 1rem; } /* keep tighter spacing on mobile */
+
       .proposals h2 { font-size: 2rem; }
 
       .filter-controls {
@@ -872,7 +872,7 @@ function setOptions(selectEl, values) {
   });
 }
 
-/* NEW: bold-highlight specific name variants anywhere in a cell */
+/* Bold-highlight specific name variants anywhere in a cell */
 const HIGHLIGHT_NAMES = ["Naman S. Bajaj", "Bajaj, Naman", "Bajaj, Naman S."];
 
 function escapeHtml(str) {
@@ -886,16 +886,11 @@ function escapeHtml(str) {
 
 function highlightNames(text) {
   if (text == null) return "";
-  // escape first to avoid injecting HTML, then safely insert our spans
   let out = escapeHtml(text);
-
-  // Replace all occurrences of each target string (literal match)
   HIGHLIGHT_NAMES.forEach(name => {
     const escapedName = escapeHtml(name);
-    // split/join to replace all occurrences without regex escaping headaches
     out = out.split(escapedName).join(`<span class="highlight-author">${escapedName}</span>`);
   });
-
   return out;
 }
 
