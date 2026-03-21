@@ -535,14 +535,7 @@
     ======================== -->
     <h3 class="proposal-section-title">Funding Proposals</h3>
 
-    <div class="filter-controls">
-      <div class="filter-group">
-        <label for="funding-telescope-filter">Filter by Telescope/Instrument</label>
-        <select id="funding-telescope-filter" class="filter-select">
-          <option value="all">All Telescopes/Instruments</option>
-        </select>
-      </div>
-    </div>
+    <!-- (Filter removed for Funding Proposals) -->
 
     <div class="table-wrap">
       <table class="proposals-table" aria-label="Funding proposals table">
@@ -550,7 +543,7 @@
           <tr>
             <th>PI</th>
             <th>Co-Is</th>
-            <th>Telescope/Instrument</th>
+            <th>Funding Org</th>
             <th>ID</th>
             <th>Title</th>
             <th>Status</th>
@@ -699,24 +692,11 @@ function renderTable(tbodyEl, emptyEl, rows) {
   });
 }
 
-/* Funding section wiring */
-const fundingFilter = document.getElementById("funding-telescope-filter");
+/* Funding section wiring (no filter; render all) */
 const fundingBody = document.getElementById("funding-proposals-body");
 const fundingEmpty = document.getElementById("funding-empty-state");
 
-setOptions(
-  fundingFilter,
-  uniqueSorted(fundingProposals.map(p => p.telescope).filter(Boolean))
-);
-
-function applyFundingFilter() {
-  const selected = fundingFilter.value;
-  const filtered = fundingProposals.filter(p => selected === "all" || p.telescope === selected);
-  renderTable(fundingBody, fundingEmpty, filtered);
-}
-
-fundingFilter.addEventListener("change", applyFundingFilter);
-applyFundingFilter();
+renderTable(fundingBody, fundingEmpty, fundingProposals);
 
 /* Observing section wiring */
 const observingFilter = document.getElementById("observing-telescope-filter");
@@ -734,9 +714,4 @@ function applyObservingFilter() {
   renderTable(observingBody, observingEmpty, filtered);
 }
 
-observingFilter.addEventListener("change", applyObservingFilter);
-applyObservingFilter();
-</script>
-
-</body>
-</html>
+*`
