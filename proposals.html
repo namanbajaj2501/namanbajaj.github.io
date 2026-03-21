@@ -326,6 +326,11 @@
     }
     .empty-state.show { display: block; }
 
+    /* Bold highlight for name */
+    .highlight-author {
+      font-weight: 800;
+    }
+
     /* Footer (MATCH about.html) */
     .home-footer {
       position: relative;
@@ -842,18 +847,17 @@ links.forEach(link=>{
    Proposals page logic
 ------------------------ */
 const fundingProposals = [
-  { pi: "N. Bajaj", cois: "A. Coauthor; B. Coauthor", telescope: "NASA FINESST", id: "FINESST-2025", title: "Disk winds and dispersal in planet-forming systems", status: "Awarded" },
-  { pi: "N. Bajaj", cois: "I. Pascucci; C. Collaborator", telescope: "NASA XRP", id: "XRP-2026-001", title: "JWST-era constraints on disk evolution models", status: "Submitted" },
-  { pi: "N. Bajaj", cois: "D. Researcher; E. Scientist", telescope: "NSF AAG", id: "AAG-2026-123", title: "Linking gas dispersal to planet formation timescales", status: "Pending" },
+  { pi: "Naman S. Bajaj", cois: "A. Coauthor; B. Coauthor", telescope: "NASA FINESST", id: "FINESST-2025", title: "Disk winds and dispersal in planet-forming systems", status: "Awarded" },
+  { pi: "Bajaj, Naman", cois: "I. Pascucci; C. Collaborator", telescope: "NASA XRP", id: "XRP-2026-001", title: "JWST-era constraints on disk evolution models", status: "Submitted" },
+  { pi: "Bajaj, Naman S.", cois: "D. Researcher; E. Scientist", telescope: "NSF AAG", id: "AAG-2026-123", title: "Linking gas dispersal to planet formation timescales", status: "Pending" },
 ];
 
 const observingProposals = [
-  { pi: "N. Bajaj", cois: "I. Pascucci; S. Edwards", telescope: "JWST/NIRSpec", id: "JWST-55555", title: "Tracing warm gas in transitional disks with NIRSpec", status: "Accepted" },
-  { pi: "N. Bajaj", cois: "K. Pontoppidan; L. Test", telescope: "JWST/MIRI", id: "JWST-66666", title: "Mid-IR diagnostics of disk winds and inner holes", status: "Submitted" },
-  { pi: "N. Bajaj", cois: "A. Coauthor; B. Coauthor", telescope: "VLT/CRIRES+", id: "ESO-0101.C-0001", title: "High-resolution CO to probe inner disk kinematics", status: "Completed" },
+  { pi: "Naman S. Bajaj", cois: "I. Pascucci; S. Edwards", telescope: "JWST/NIRSpec", id: "JWST-55555", title: "Tracing warm gas in transitional disks with NIRSpec", status: "Accepted" },
+  { pi: "Bajaj, Naman", cois: "K. Pontoppidan; L. Test", telescope: "JWST/MIRI", id: "JWST-66666", title: "Mid-IR diagnostics of disk winds and inner holes", status: "Submitted" },
+  { pi: "Bajaj, Naman S.", cois: "A. Coauthor; B. Coauthor", telescope: "VLT/CRIRES+", id: "ESO-0101.C-0001", title: "High-resolution CO to probe inner disk kinematics", status: "Completed" },
 ];
 
-/* Utilities */
 function uniqueSorted(arr) {
   return [...new Set(arr)].sort((a, b) => a.localeCompare(b));
 }
@@ -868,6 +872,33 @@ function setOptions(selectEl, values) {
   });
 }
 
+/* NEW: bold-highlight specific name variants anywhere in a cell */
+const HIGHLIGHT_NAMES = ["Naman S. Bajaj", "Bajaj, Naman", "Bajaj, Naman S."];
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function highlightNames(text) {
+  if (text == null) return "";
+  // escape first to avoid injecting HTML, then safely insert our spans
+  let out = escapeHtml(text);
+
+  // Replace all occurrences of each target string (literal match)
+  HIGHLIGHT_NAMES.forEach(name => {
+    const escapedName = escapeHtml(name);
+    // split/join to replace all occurrences without regex escaping headaches
+    out = out.split(escapedName).join(`<span class="highlight-author">${escapedName}</span>`);
+  });
+
+  return out;
+}
+
 function renderTable(tbodyEl, emptyEl, rows) {
   tbodyEl.innerHTML = "";
   if (!rows.length) {
@@ -879,12 +910,12 @@ function renderTable(tbodyEl, emptyEl, rows) {
   rows.forEach(r => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${r.pi ?? ""}</td>
-      <td>${r.cois ?? ""}</td>
-      <td>${r.telescope ?? ""}</td>
-      <td>${r.id ?? ""}</td>
-      <td>${r.title ?? ""}</td>
-      <td>${r.status ?? ""}</td>
+      <td>${highlightNames(r.pi ?? "")}</td>
+      <td>${highlightNames(r.cois ?? "")}</td>
+      <td>${highlightNames(r.telescope ?? "")}</td>
+      <td>${highlightNames(r.id ?? "")}</td>
+      <td>${highlightNames(r.title ?? "")}</td>
+      <td>${highlightNames(r.status ?? "")}</td>
     `;
     tbodyEl.appendChild(tr);
   });
