@@ -411,39 +411,65 @@ body.dark .ads-link {
 }
 
 /* ==========================
-   CV section (single full-width viewer)
+   CV section (Option A: centered + larger viewer)
 ========================== */
 
 .cv-section {
-  margin-top: 2.5rem;
+  margin: 3rem auto;
   width: 100%;
+  max-width: 1200px;     /* center column */
+  padding: 0 1.5rem;     /* breathing room */
 }
 
-/* Header with title + download button (top) */
+/* Header with title + download button */
 .cv-header {
   display: flex;
-  gap: 1rem;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
-  width: 100%;
+
+  font-family: inherit;  /* match page font */
+  font-size: 1rem;
 }
 
+.cv-header h2 {
+  margin: 0;
+  font-family: inherit;  /* match section headings on this page */
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Buttons consistent with rest of the site */
 .cv-download {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+
   text-decoration: none;
-  padding: 0.55rem 0.9rem;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.15);
-  background: rgba(0,0,0,0.03);
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  border: 2px solid rgba(102, 126, 234, 0.25);
+  background: #fff;
+  color: #333;
+  transition: all 0.2s ease;
 }
 
-/* Full-width embedded PDF area */
+.cv-download:hover {
+  transform: translateY(-1px);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 0 8px 18px rgba(102, 126, 234, 0.18);
+}
+
+/* Bigger PDF viewer */
 .cv-viewer {
   width: 100%;
-  height: min(85vh, 1000px);
-  border: 1px solid rgba(0,0,0,0.12);
-  border-radius: 10px;
+  height: min(92vh, 1100px);   /* increased height */
+  margin: 0 auto;
+
+  border: 2px solid rgba(102, 126, 234, 0.18);
+  border-radius: 16px;
   overflow: hidden;
   background: #fff;
 }
@@ -456,7 +482,34 @@ body.dark .ads-link {
 }
 
 .cv-footer {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
+}
+
+/* Dark mode */
+body.dark .cv-download {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  border-color: rgba(160, 180, 255, 0.35);
+}
+
+body.dark .cv-viewer {
+  background: #0d0d0d;
+  border-color: rgba(160, 180, 255, 0.25);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cv-section {
+    padding: 0 1rem;
+  }
+
+  .cv-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .cv-viewer {
+    height: min(85vh, 900px);
+  }
 }
