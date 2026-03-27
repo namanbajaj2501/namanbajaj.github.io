@@ -1040,29 +1040,32 @@
 </section>
 
 <section id="cv" class="cv-section">
-  <div class="cv-header">
-    <h2>Curriculum Vitae</h2>
-    <a class="cv-download" href="assets/CV.pdf" download>Download CV (PDF)</a>
-  </div>
+  <h2>Curriculum Vitae</h2>
 
   <div class="cv-strip" aria-label="CV preview (scroll horizontally)">
     <div class="cv-page">
-      <embed src="assets/cv.pdf#page=1&view=FitH" type="application/pdf" />
-      <div class="cv-page-label">Page 1</div>
+      <embed src="./assets/CV.pdf#page=1&view=FitH" type="application/pdf" />
     </div>
 
     <div class="cv-page">
-      <embed src="assets/cv.pdf#page=2&view=FitH" type="application/pdf" />
-      <div class="cv-page-label">Page 2</div>
+      <embed src="./assets/cv.pdf#page=2&view=FitH" type="application/pdf" />
     </div>
 
     <div class="cv-page">
-      <embed src="assets/cv.pdf#page=3&view=FitH" type="application/pdf" />
-      <div class="cv-page-label">Page 3</div>
+      <embed src="./assets/cv.pdf#page=3&view=FitH" type="application/pdf" />
     </div>
+
+    <!-- add more pages by duplicating -->
+    <!--
+    <div class="cv-page">
+      <embed src="./assets/cv.pdf#page=4&view=FitH" type="application/pdf" />
+    </div>
+    -->
   </div>
 
-  <p class="cv-hint">Tip: scroll sideways to view all pages.</p>
+  <div class="cv-footer">
+    <a class="cv-download" href="./assets/cv.pdf" download>Download CV (PDF)</a>
+  </div>
 </section>
 
 <footer class="home-footer">
