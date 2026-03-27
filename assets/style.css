@@ -411,16 +411,30 @@ body.dark .ads-link {
 }
 
 /* ==========================
-   CV section (single centered viewer)
+   CV section (centered + large viewer)
 ========================== */
 
 .cv-section {
-  /* Keep it consistent with your .section layout */
   padding-top: 30px;
   padding-bottom: 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers everything horizontally */
 }
 
-/* Title aligned like other sections */
+/* Container controls overall width */
+.cv-container {
+  width: 100%;
+  max-width: 1100px; /* adjust: 900–1200px depending on your taste */
+  margin: 0 auto;
+}
+
+/* Title aligned cleanly */
+.cv-header {
+  text-align: left;
+}
+
 .cv-header h2 {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
@@ -433,6 +447,7 @@ body.dark .ads-link {
 .cv-viewer {
   width: 100%;
   height: min(85vh, 1100px);
+
   border-radius: 16px;
   overflow: hidden;
 
@@ -459,12 +474,12 @@ body.dark .ads-link {
   flex-wrap: wrap;
 }
 
-/* Reuse your .button but remove the built-in top margin */
+/* Button tweaks */
 .cv-btn {
   margin-top: 0;
 }
 
-/* Secondary button variant that still matches theme */
+/* Secondary button */
 .cv-btn-secondary {
   background: transparent;
   color: var(--accent);
@@ -491,9 +506,17 @@ body.dark .cv-btn-secondary:hover {
   background: rgba(122, 162, 255, 0.10);
 }
 
-/* Mobile */
+/* Mobile optimization */
 @media (max-width: 768px) {
+  .cv-container {
+    padding: 0 16px; /* prevent edge touching */
+  }
+
   .cv-viewer {
     height: min(75vh, 900px);
+  }
+
+  .cv-header h2 {
+    font-size: 1.6rem;
   }
 }
