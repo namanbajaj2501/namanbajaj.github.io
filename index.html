@@ -1039,27 +1039,57 @@
   </div>
 </section>
 
-<section class="section cv-section" id="cv">
-  <div class="cv-header">
-    <h2>Curriculum Vitae</h2>
+<section id="cv" class="section cv-section">
+  <h2>Curriculum Vitae</h2>
 
-    <!-- Download option at the top -->
-    <a class="cv-download" href="./assets/CV.pdf" download>
-      Download CV
-    </a>
+  <div class="cv-strip" aria-label="CV pages (scroll horizontally)">
+    <!-- Page 1 -->
+    <article class="cv-page" aria-label="CV page 1">
+      <iframe
+        class="cv-frame"
+        src="./assets/cv.pdf#page=1&view=FitH&zoom=page-width"
+        title="CV page 1"
+        loading="lazy">
+      </iframe>
+      <div class="cv-page-meta">Page 1</div>
+    </article>
+
+    <!-- Page 2 -->
+    <article class="cv-page" aria-label="CV page 2">
+      <iframe
+        class="cv-frame"
+        src="./assets/cv.pdf#page=2&view=FitH&zoom=page-width"
+        title="CV page 2"
+        loading="lazy">
+      </iframe>
+      <div class="cv-page-meta">Page 2</div>
+    </article>
+
+    <!-- Page 3 -->
+    <article class="cv-page" aria-label="CV page 3">
+      <iframe
+        class="cv-frame"
+        src="./assets/cv.pdf#page=3&view=FitH&zoom=page-width"
+        title="CV page 3"
+        loading="lazy">
+      </iframe>
+      <div class="cv-page-meta">Page 3</div>
+    </article>
+
+    <!-- Add more pages by duplicating:
+    <article class="cv-page" aria-label="CV page 4">
+      <iframe class="cv-frame" src="./assets/cv.pdf#page=4&view=FitH&zoom=page-width" title="CV page 4" loading="lazy"></iframe>
+      <div class="cv-page-meta">Page 4</div>
+    </article>
+    -->
   </div>
 
-  <!-- Embedded viewer (PDF scrolls vertically inside) -->
-  <div class="cv-viewer">
-    <embed src="./assets/CV.pdf" type="application/pdf" />
+  <div class="cv-actions">
+    <a class="button cv-btn" href="./assets/cv.pdf" download>Download CV (PDF)</a>
+    <a class="button cv-btn cv-btn-secondary" href="./assets/cv.pdf" target="_blank" rel="noopener">Open in new tab</a>
   </div>
 
-  <!-- Optional: keep a bottom button too -->
-  <div class="cv-footer">
-    <a class="cv-download" href="./assets/CV.pdf" target="_blank" rel="noopener">
-      Open in new tab
-    </a>
-  </div>
+  <p class="cv-hint">Scroll sideways to view more pages.</p>
 </section>
 
 <footer class="home-footer">
