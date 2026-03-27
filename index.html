@@ -1039,32 +1039,26 @@
   </div>
 </section>
 
-<section id="cv" class="cv-section">
-  <h2>Curriculum Vitae</h2>
+<section class="section cv-section" id="cv">
+  <div class="cv-header">
+    <h2>Curriculum Vitae</h2>
 
-  <div class="cv-strip" aria-label="CV preview (scroll horizontally)">
-    <div class="cv-page">
-      <embed src="./assets/CV.pdf#page=1&view=FitH" type="application/pdf" />
-    </div>
-
-    <div class="cv-page">
-      <embed src="./assets/cv.pdf#page=2&view=FitH" type="application/pdf" />
-    </div>
-
-    <div class="cv-page">
-      <embed src="./assets/cv.pdf#page=3&view=FitH" type="application/pdf" />
-    </div>
-
-    <!-- add more pages by duplicating -->
-    <!--
-    <div class="cv-page">
-      <embed src="./assets/cv.pdf#page=4&view=FitH" type="application/pdf" />
-    </div>
-    -->
+    <!-- Download option at the top -->
+    <a class="cv-download" href="./assets/CV.pdf" download>
+      Download CV
+    </a>
   </div>
 
+  <!-- Embedded viewer (PDF scrolls vertically inside) -->
+  <div class="cv-viewer">
+    <embed src="./assets/CV.pdf" type="application/pdf" />
+  </div>
+
+  <!-- Optional: keep a bottom button too -->
   <div class="cv-footer">
-    <a class="cv-download" href="./assets/cv.pdf" download>Download CV (PDF)</a>
+    <a class="cv-download" href="./assets/CV.pdf" target="_blank" rel="noopener">
+      Open in new tab
+    </a>
   </div>
 </section>
 
