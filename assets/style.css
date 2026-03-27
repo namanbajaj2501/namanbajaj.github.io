@@ -410,73 +410,86 @@ body.dark .ads-link {
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* ==========================
+   CV section (single full-width + horizontal scroll)
+========================== */
+
 .cv-section {
- margin-top: 2.5rem;
+  margin-top: 2.5rem;
+  width: 100%;
 }
 
+/* Keep header full width */
 .cv-header {
- display: flex;
- gap: 1rem;
- align-items: baseline;
- justify-content: space-between;
- flex-wrap: wrap;
- margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .cv-download {
- text-decoration: none;
- padding: 0.55rem 0.9rem;
- border-radius: 8px;
- border: 1px solid rgba(0,0,0,0.15);
- background: rgba(0,0,0,0.03);
+  text-decoration: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.03);
 }
 
-/* ONE horizontal strip */
+/* One full-width horizontal scroller */
 .cv-strip {
- display: flex;
- flex-wrap: nowrap;          /* prevents wrapping into vertical stacks */
- gap: 1rem;
- overflow-x: auto;
- overflow-y: hidden;
- padding: 0.5rem 0.25rem 1rem;
- -webkit-overflow-scrolling: touch;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;            /* no wrapping (no vertical stacking) */
+  gap: 1rem;
+
+  overflow-x: auto;             /* scroll to the right */
+  overflow-y: hidden;           /* no bottom/vertical scroll */
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0.5rem;
+
+  padding: 0.5rem 0.25rem 1rem;
+  -webkit-overflow-scrolling: touch;
 }
 
-
-/* Each page is a fixed card so 3 fit on desktop */
+/* Each "page" takes the full visible width (one section/page at a time) */
 .cv-page {
- flex: 0 0 auto;
- width: 32%;                 /* ~3 side-by-side */
- min-width: 320px;           /* still scrolls on small screens */
- height: 520px;
- border: 1px solid rgba(0,0,0,0.12);
- border-radius: 10px;
- background: #fff;
- overflow: hidden;
+  flex: 0 0 100%;
+  width: 100%;
+  height: min(78vh, 900px);     /* tall enough to view; adjust if needed */
+
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+
+  scroll-snap-align: start;
 }
 
 .cv-page embed {
- width: 100%;
- height: 100%;
- border: 0;
- flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 .cv-page-label {
- font-size: 0.85rem;
- padding: 0.5rem 0.75rem;
- border-top: 1px solid rgba(0,0,0,0.08);
- background: rgba(0,0,0,0.02);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.02);
 }
 
 .cv-hint {
- margin-top: 0.5rem;
- font-size: 0.95rem;
- opacity: 0.8;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 .cv-footer {
- margin-top: 0.75rem;
- display: flex;
- justify-content: center;    /* download button at bottom, centered */
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
 }
