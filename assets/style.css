@@ -431,28 +431,28 @@ body.dark .ads-link {
  background: rgba(0,0,0,0.03);
 }
 
-/* Side-scroll strip */
+/* ONE horizontal strip */
 .cv-strip {
  display: flex;
+ flex-wrap: nowrap;          /* prevents wrapping into vertical stacks */
  gap: 1rem;
  overflow-x: auto;
  overflow-y: hidden;
  padding: 0.5rem 0.25rem 1rem;
- scroll-snap-type: x mandatory;
  -webkit-overflow-scrolling: touch;
 }
 
+
+/* Each page is a fixed card so 3 fit on desktop */
 .cv-page {
  flex: 0 0 auto;
- width: min(360px, 80vw);    /* multiple pages visible on desktop */
- height: 460px;              /* adjust as needed */
+ width: 32%;                 /* ~3 side-by-side */
+ min-width: 320px;           /* still scrolls on small screens */
+ height: 520px;
  border: 1px solid rgba(0,0,0,0.12);
  border-radius: 10px;
  background: #fff;
- scroll-snap-align: start;
  overflow: hidden;
- display: flex;
- flex-direction: column;
 }
 
 .cv-page embed {
@@ -473,4 +473,10 @@ body.dark .ads-link {
  margin-top: 0.5rem;
  font-size: 0.95rem;
  opacity: 0.8;
+}
+
+.cv-footer {
+ margin-top: 0.75rem;
+ display: flex;
+ justify-content: center;    /* download button at bottom, centered */
 }
