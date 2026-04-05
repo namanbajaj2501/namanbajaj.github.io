@@ -167,13 +167,20 @@
 
     .mobile-nav-links.active {
       display: flex;
-      max-height: 500px;
     }
 
     .mobile-nav-links .nav-link {
       width: 100%;
       text-align: center;
       padding: 0.8rem 1rem !important;
+    }
+    
+    /* Mobile Navigation Dropdown - make it scrollable */
+    .mobile-nav-links.active {
+      display: flex;
+      max-height: calc(100vh - 80px); /* 80px ≈ navbar height; adjust if needed */
+      overflow-y: auto;               /* enable vertical scrolling */
+      -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
     }
 
     /* Image Carousel */
