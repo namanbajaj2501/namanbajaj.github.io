@@ -306,6 +306,25 @@ footer {
   color: #666;
 }
 
+/* Compact footer nav on mobile + desktop (matches cv.html) */
+.home-footer .footer-nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Optional: slightly tighter on small screens so it fits in fewer lines */
+@media (max-width: 768px) {
+  .home-footer .footer-nav {
+    gap: 0.9rem;
+  }
+  .home-footer .footer-nav a {
+    font-size: 0.95rem;
+  }
+}
+
 /* ==========================
    Dark Mode
 ========================== */
