@@ -78,27 +78,36 @@
       --card-bg: #ffffff;
       --card-fg: #222222;
       --border: rgba(102, 126, 234, 0.12);
+
+      /* Footer tokens */
+      --footer-bg: #e8e9f3;
+      --footer-border: rgba(102, 126, 234, 0.2);
+      --footer-text: #555;
+
       background: var(--page-bg);
       color: var(--page-fg);
     }
-    
+
     body.dark {
       --page-bg: #0d0d0d;
       --page-fg: #eaeaea;
       --card-bg: #151515;
       --card-fg: #eaeaea;
       --border: rgba(102, 126, 234, 0.22);
+
+      --footer-bg: #0d0d0d;
+      --footer-border: rgba(102, 126, 234, 0.3);
+      --footer-text: #b0b0b0;
     }
-    
+
     /* Apply tokens to your blocks */
     .cv-hero,
-    .cv-viewer,
-    .footer-container {
+    .cv-viewer {
       background: var(--card-bg);
       color: var(--card-fg);
       border-color: var(--border);
     }
-    
+
     .nav-bar #theme-toggle {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
       border: none !important;
@@ -248,7 +257,7 @@
       margin-top: 1.5rem;
       border-radius: 16px;
       border: 2px solid rgba(102, 126, 234, 0.12);
-      background: var(--card-bg); /* replace var(--bg-color, #fff) */
+      background: var(--card-bg);
       overflow: hidden;
     }
 
@@ -292,7 +301,7 @@
     }
 
     /* Don't reserve space for the fallback unless noscript renders */
-    .cv-fallback { 
+    .cv-fallback {
       display: none;
       padding: 0;
       margin: 0;
@@ -309,16 +318,11 @@
     .home-footer {
       position: relative;
       padding: 3.5rem 2rem 2rem;
-      background: #e8e9f3;
-      border-top: 2px solid rgba(102, 126, 234, 0.2);
+      background: var(--footer-bg);
+      border-top: 2px solid var(--footer-border);
       overflow: hidden;
       width: 100%;
       margin-top: 3rem;
-    }
-
-    body.dark .home-footer {
-      background: #0d0d0d;
-      border-top-color: rgba(102, 126, 234, 0.3);
     }
 
     .footer-constellation {
@@ -376,6 +380,10 @@
       text-align: center;
       z-index: 1;
       width: 100%;
+
+      /* Important: remove the "constant white block" behind footer content */
+      background: transparent;
+      border: none;
     }
 
     .footer-name {
@@ -391,12 +399,10 @@
     .footer-tagline {
       font-size: 1.05rem;
       line-height: 1.7;
-      color: #555;
+      color: var(--footer-text);
       margin-bottom: 2rem;
       max-width: 700px;
     }
-
-    body.dark .footer-tagline { color: #b0b0b0; }
 
     .footer-nav {
       display: flex;
@@ -538,6 +544,7 @@
       border-top-color: rgba(102, 126, 234, 0.25);
       color: #999;
     }
+
     /* Dark Mode tweaks */
     body.dark .cv-hero {
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
@@ -658,70 +665,191 @@
   </main>
 
   <footer class="home-footer">
-  <div class="footer-constellation" id="constellation"></div>
-  <div class="footer-container">
-    <h2 class="footer-name">Naman Bajaj</h2>
-    <p class="footer-tagline">Whether you're interested in collaborating on research, discussing science outreach, or just want to chat about planet formation—I'd love to hear from you.</p>
-    <nav class="footer-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="cv.html">CV</a>
-      <a href="research.html">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="proposals.html">Proposals</a>
-      <a href="outreach.html">Outreach</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="search-container">
-      <input type="text" class="search-box" id="searchBox" placeholder="Search this website...">
+    <div class="footer-constellation" id="constellation"></div>
+    <div class="footer-container">
+      <h2 class="footer-name">Naman Bajaj</h2>
+      <p class="footer-tagline">Whether you're interested in collaborating on research, discussing science outreach, or just want to chat about planet formation—I'd love to hear from you.</p>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cv.html">CV</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="proposals.html">Proposals</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="search-container">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search this website...">
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/naman-bajaj" target="_blank" class="footer-link">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" class="footer-link">
+          <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="contact.html" class="footer-link contact-btn">✉️ Get in Touch</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Naman Bajaj • PhD Candidate, University of Arizona</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Lunar and Planetary Laboratory • NASA FINESST Fellow</p>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="https://github.com/naman-bajaj" target="_blank" class="footer-link">
-        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" class="footer-link">
-        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        LinkedIn
-      </a>
-      <a href="contact.html" class="footer-link contact-btn">✉️ Get in Touch</a>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Naman Bajaj • PhD Candidate, University of Arizona</p>
-      <p style="margin-top: 0.5rem; opacity: 0.7;">Lunar and Planetary Laboratory • NASA FINESST Fellow</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script>
-    // Active nav link
+    // Active nav link (mark "CV" active; works for both desktop + mobile links)
     (function setActiveNav() {
-      var links = document.querySelectorAll('.nav-link');
-      links.forEach(function(a) {
+      document.querySelectorAll('.nav-link').forEach(function(a) {
         if (a.getAttribute('href') === 'cv.html') a.classList.add('active');
       });
     })();
 
-    // Theme toggle (keeps behavior consistent across pages)
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+    // Theme toggle (FIXED: remove duplicate/conflicting handlers; apply on load; update aria)
+    (function themeInit() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      if (!themeToggle) return;
 
-    function setTheme(isDark) {
-      if (isDark) body.classList.add('dark');
-      else body.classList.remove('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      function applyTheme(theme) {
+        const isDark = theme === 'dark';
+        body.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+      }
+
+      // Prefer saved theme; else fall back to system preference
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') {
+        applyTheme(saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        applyTheme('dark');
+      } else {
+        applyTheme('light');
+      }
+
+      themeToggle.addEventListener('click', function () {
+        const next = body.classList.contains('dark') ? 'light' : 'dark';
+        applyTheme(next);
+      });
+    })();
+
+    // Mobile menu
+    (function mobileNav() {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNavLinks = document.getElementById('mobileNavLinks');
+      if (!mobileMenuBtn || !mobileNavLinks) return;
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = mobileNavLinks.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active', isOpen);
+        mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuBtn.classList.remove('active');
+          mobileNavLinks.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Constellation
+    function createConstellation() {
+      const constellation = document.getElementById('constellation');
+      if (!constellation) return;
+
+      const width = constellation.offsetWidth;
+      const height = constellation.offsetHeight;
+
+      constellation.innerHTML = '';
+      const dots = [];
+      const numDots = 50;
+
+      for (let i = 0; i < numDots; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'constellation-dot';
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        dot.style.left = x + 'px';
+        dot.style.top = y + 'px';
+        dot.style.animationDelay = Math.random() * 3 + 's';
+        constellation.appendChild(dot);
+        dots.push({ x, y, element: dot });
+      }
+
+      for (let i = 0; i < dots.length; i++) {
+        for (let j = i + 1; j < dots.length; j++) {
+          const dx = dots[j].x - dots[i].x;
+          const dy = dots[j].y - dots[i].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 250) {
+            const line = document.createElement('div');
+            line.className = 'constellation-line';
+            const angle = Math.atan2(dy, dx);
+            line.style.width = distance + 'px';
+            line.style.left = dots[i].x + 'px';
+            line.style.top = dots[i].y + 'px';
+            line.style.transform = `rotate(${angle}rad)`;
+            line.style.opacity = (1 - distance / 250) * 0.7;
+            constellation.appendChild(line);
+          }
+        }
+      }
     }
 
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') setTheme(true);
+    window.addEventListener('load', createConstellation);
 
-    themeToggle.addEventListener('click', () => {
-      setTheme(!body.classList.contains('dark'));
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        createConstellation();
+      }, 250);
     });
 
-    const mobileMenuBtn=document.getElementById('mobileMenuBtn');const mobileNavLinks=document.getElementById('mobileNavLinks');mobileMenuBtn.addEventListener('click',()=>{mobileMenuBtn.classList.toggle('active');mobileNavLinks.classList.toggle('active');});document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link=>{link.addEventListener('click',()=>{mobileMenuBtn.classList.remove('active');mobileNavLinks.classList.remove('active');});});function createConstellation(){const constellation=document.getElementById('constellation');const width=constellation.offsetWidth;const height=constellation.offsetHeight;constellation.innerHTML='';const dots=[];const numDots=50;for(let i=0;i<numDots;i++){const dot=document.createElement('div');dot.className='constellation-dot';const x=Math.random()*width;const y=Math.random()*height;dot.style.left=x+'px';dot.style.top=y+'px';dot.style.animationDelay=Math.random()*3+'s';constellation.appendChild(dot);dots.push({x,y,element:dot});}for(let i=0;i<dots.length;i++){for(let j=i+1;j<dots.length;j++){const dx=dots[j].x-dots[i].x;const dy=dots[j].y-dots[i].y;const distance=Math.sqrt(dx*dx+dy*dy);if(distance<250){const line=document.createElement('div');line.className='constellation-line';const angle=Math.atan2(dy,dx);line.style.width=distance+'px';line.style.left=dots[i].x+'px';line.style.top=dots[i].y+'px';line.style.transform=`rotate(${angle}rad)`;line.style.opacity=(1-distance/250)*0.7;constellation.appendChild(line);}}}}window.addEventListener('load',createConstellation);let resizeTimeout;window.addEventListener('resize',()=>{clearTimeout(resizeTimeout);resizeTimeout=setTimeout(()=>{createConstellation();},250);});document.getElementById('searchBox').addEventListener('keypress',(e)=>{if(e.key==='Enter'){const searchTerm=e.target.value.trim().toLowerCase();if(searchTerm){const pages=[{url:'index.html',title:'Home',keywords:['home','naman bajaj','astronomer','planet formation','jwst','nasa','protoplanetary disk','disk winds','photoevaporation']},{url:'about.html',title:'About Me',keywords:['about','biography','education','background','india','university of arizona','phd','mechanical engineering','astronomy']},{url:'research.html',title:'Research',keywords:['research','disk evolution','disk dispersal','circumbinary','jwst','miri','nirspec','photoevaporation','mhd winds','jets','tcha','binary']},{url:'publications.html',title:'Publications',keywords:['publications','papers','nature astronomy','astronomical journal','astrophysical journal','first author','ads','pascucci','bajaj']},{url:'outreach.html',title:'Outreach',keywords:['outreach','podcast','school','press','media','science communication','education','seti']},{url:'contact.html',title:'Contact',keywords:['contact','email','collaboration','get in touch','reach out']}];const matches=pages.filter(page=>{return page.keywords.some(keyword=>keyword.includes(searchTerm))||page.title.toLowerCase().includes(searchTerm);});if(matches.length>0){window.location.href=matches[0].url;}else{const googleSearch=confirm(`No direct match found for "${searchTerm}".\n\nWould you like to search on Google instead?`);if(googleSearch){window.open(`https://www.google.com/search?q=site:naman-bajaj.github.io ${encodeURIComponent(searchTerm)}`,'_blank');}}}}});const toggle=document.getElementById("theme-toggle");if(localStorage.theme==="dark")document.body.classList.add("dark");toggle?.addEventListener("click",()=>{document.body.classList.toggle("dark");localStorage.theme=document.body.classList.contains("dark")?"dark":"light";});const links=document.querySelectorAll('.nav-link');links.forEach(link=>{if(link.href===window.location.href){link.classList.add('active');}});
+    // Search box
+    (function footerSearch() {
+      const searchEl = document.getElementById('searchBox');
+      if (!searchEl) return;
+
+      searchEl.addEventListener('keypress', (e) => {
+        if (e.key !== 'Enter') return;
+
+        const searchTerm = e.target.value.trim().toLowerCase();
+        if (!searchTerm) return;
+
+        const pages = [
+          { url: 'index.html', title: 'Home', keywords: ['home', 'naman bajaj', 'astronomer', 'planet formation', 'jwst', 'nasa', 'protoplanetary disk', 'disk winds', 'photoevaporation'] },
+          { url: 'about.html', title: 'About Me', keywords: ['about', 'biography', 'education', 'background', 'india', 'university of arizona', 'phd', 'mechanical engineering', 'astronomy'] },
+          { url: 'cv.html', title: 'CV', keywords: ['cv', 'curriculum vitae', 'resume', 'bajaj'] },
+          { url: 'research.html', title: 'Research', keywords: ['research', 'disk evolution', 'disk dispersal', 'circumbinary', 'jwst', 'miri', 'nirspec', 'photoevaporation', 'mhd winds', 'jets', 'tcha', 'binary'] },
+          { url: 'publications.html', title: 'Publications', keywords: ['publications', 'papers', 'nature astronomy', 'astronomical journal', 'astrophysical journal', 'first author', 'ads', 'pascucci', 'bajaj'] },
+          { url: 'outreach.html', title: 'Outreach', keywords: ['outreach', 'podcast', 'school', 'press', 'media', 'science communication', 'education', 'seti'] },
+          { url: 'contact.html', title: 'Contact', keywords: ['contact', 'email', 'collaboration', 'get in touch', 'reach out'] }
+        ];
+
+        const matches = pages.filter(page => {
+          return page.keywords.some(keyword => keyword.includes(searchTerm)) ||
+                 page.title.toLowerCase().includes(searchTerm);
+        });
+
+        if (matches.length > 0) {
+          window.location.href = matches[0].url;
+        } else {
+          const googleSearch = confirm(`No direct match found for "${searchTerm}".\n\nWould you like to search on Google instead?`);
+          if (googleSearch) {
+            window.open(`https://www.google.com/search?q=site:naman-bajaj.github.io ${encodeURIComponent(searchTerm)}`, '_blank');
+          }
+        }
+      });
+    })();
   </script>
-  
+
 </body>
 </html>
