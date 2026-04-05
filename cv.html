@@ -71,6 +71,34 @@
 
     body.dark .nav-bar .nav-link.active { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5); }
 
+    /* Theme tokens */
+    body {
+      --page-bg: #ffffff;
+      --page-fg: #111111;
+      --card-bg: #ffffff;
+      --card-fg: #222222;
+      --border: rgba(102, 126, 234, 0.12);
+      background: var(--page-bg);
+      color: var(--page-fg);
+    }
+    
+    body.dark {
+      --page-bg: #0d0d0d;
+      --page-fg: #eaeaea;
+      --card-bg: #151515;
+      --card-fg: #eaeaea;
+      --border: rgba(102, 126, 234, 0.22);
+    }
+    
+    /* Apply tokens to your blocks */
+    .cv-hero,
+    .cv-viewer,
+    .footer-container {
+      background: var(--card-bg);
+      color: var(--card-fg);
+      border-color: var(--border);
+    }
+    
     .nav-bar #theme-toggle {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
       border: none !important;
@@ -220,7 +248,7 @@
       margin-top: 1.5rem;
       border-radius: 16px;
       border: 2px solid rgba(102, 126, 234, 0.12);
-      background: var(--bg-color, #fff);
+      background: var(--card-bg); /* replace var(--bg-color, #fff) */
       overflow: hidden;
     }
 
@@ -519,7 +547,6 @@
     body.dark .btn {
       background: #1a1a1a;
       color: #e0e0e0;
-      border-color: rgba(102, 126, 234, 0.3);
     }
 
     body.dark .btn:hover {
