@@ -86,6 +86,54 @@ nav a.active {
 #theme-toggle:hover {
   color: #7aa2ff;
 }
+
+/* Desktop dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 160px;
+  padding: 0.5rem;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all 0.2s ease;
+  z-index: 2000;
+}
+
+body.dark .dropdown-menu {
+  background: rgba(26, 26, 26, 0.95);
+  border-color: rgba(102, 126, 234, 0.25);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Optional: make dropdown items look like menu items */
+.dropdown-link {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1rem !important;
+  border-radius: 10px !important;
+  transform: none !important; /* avoid jumpiness inside the menu */
+}
 /* ==========================
    Hero Section
 ========================== */
