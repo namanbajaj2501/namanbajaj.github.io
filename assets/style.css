@@ -94,30 +94,53 @@ nav a.active {
   align-items: center;
 }
 
+/* Arrow beside dropdown parents */
+.nav-dropdown > .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.nav-dropdown > .nav-link::after {
+  content: "▾";
+  font-size: 0.85rem;
+  line-height: 1;
+  opacity: 0.75;
+  transform: translateY(1px);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-dropdown:hover > .nav-link::after {
+  transform: translateY(1px) rotate(180deg);
+  opacity: 1;
+}
+
+/* Dropdown panel */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   left: 0;
-  min-width: 160px;
-  padding: 0.5rem;
-  border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.95);
+  min-width: 220px;  /* accommodates 2 items comfortably */
+  padding: 0.55rem;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(102, 126, 234, 0.15);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(102, 126, 234, 0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
 
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
-  transition: all 0.2s ease;
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease;
   z-index: 2000;
 }
 
 body.dark .dropdown-menu {
-  background: rgba(26, 26, 26, 0.95);
-  border-color: rgba(102, 126, 234, 0.25);
+  background: rgba(26, 26, 26, 0.96);
+  border-color: rgba(102, 126, 234, 0.28);
 }
 
 .nav-dropdown:hover .dropdown-menu {
@@ -126,13 +149,22 @@ body.dark .dropdown-menu {
   transform: translateY(0);
 }
 
-/* Optional: make dropdown items look like menu items */
+/* Dropdown items */
 .dropdown-link {
   display: block;
   width: 100%;
-  padding: 0.7rem 1rem !important;
-  border-radius: 10px !important;
-  transform: none !important; /* avoid jumpiness inside the menu */
+  padding: 0.75rem 1rem !important; /* more vertical room */
+  border-radius: 12px !important;
+  transform: none !important;
+  white-space: nowrap;
+}
+
+.dropdown-menu .dropdown-link:hover {
+  background: rgba(102, 126, 234, 0.10);
+}
+
+body.dark .dropdown-menu .dropdown-link:hover {
+  background: rgba(160, 180, 255, 0.12);
 }
 /* ==========================
    Hero Section
