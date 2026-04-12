@@ -775,21 +775,23 @@
       body { max-width: 100vw; overflow-x: hidden; }
     
       .nav-bar {
+        /* keep overall spacing */
         padding: 1rem 1.5rem !important;
         justify-content: space-between;
         position: relative;
+    
+        /* ensure left-positioned hamburger doesn't collide with title area */
+        padding-left: calc(1.5rem + 42px + 12px) !important; /* left padding + button width + gap */
       }
     
       .nav-links { display: none !important; }
+      .nav-center { display: none !important; } /* hide desktop links */
       .mobile-menu-btn { display: flex; }
     
       main { padding: 1.5rem; }
       .stats-grid { grid-template-columns: 1fr; }
       .timeline { padding-left: 2rem; }
     
-      .nav-center { display: none !important; } /* hide desktop links */
-    
-      /* --- Mobile navbar layout fixes --- */
       /* override desktop min-widths that break mobile */
       .nav-left,
       .nav-right {
@@ -802,6 +804,7 @@
         align-items: center;
       }
     
+      /* keep theme toggle on the right */
       .nav-right {
         display: flex !important;
         margin-left: auto !important;
@@ -810,7 +813,16 @@
         align-items: center;
       }
     
-      /* keep title centered but avoid overlapping clicks */
+      /* move hamburger to the left end (independent of DOM order) */
+      #mobileMenuBtn {
+        position: absolute;
+        left: 1.5rem;     /* matches nav-bar horizontal padding */
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1002;    /* above title */
+      }
+    
+      /* keep title centered but don't steal taps */
       .site-title {
         position: absolute;
         left: 50%;
@@ -819,6 +831,7 @@
         width: max-content;
         max-width: 70%;
         pointer-events: none;
+        z-index: 1001;
       }
     
       .site-title-name { font-size: 1.25rem; }
