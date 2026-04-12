@@ -38,7 +38,7 @@ a {
 nav.nav-bar {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 20px;
   padding: 20px 30px;
   background-color: rgba(0,0,0,0.85);
@@ -166,6 +166,41 @@ body.dark .dropdown-menu {
 
 body.dark .dropdown-menu .dropdown-link:hover {
   background: rgba(160, 180, 255, 0.12);
+}
+
+/* Site title in navbar */
+.site-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Desktop: title first, then menus; keep controls on the right */
+nav.nav-bar {
+  justify-content: flex-start; /* override existing flex-end */
+}
+
+nav.nav-bar .nav-links {
+  margin-left: 1.25rem;
+}
+
+nav.nav-bar #theme-toggle {
+  margin-left: auto; /* pushes theme toggle + anything after it to the far right */
+}
+
+/* Mobile: keep everything as-is, but center the title */
+@media (max-width: 768px) {
+  .site-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 /* ==========================
    Hero Section
