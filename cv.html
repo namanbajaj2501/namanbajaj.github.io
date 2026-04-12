@@ -833,12 +833,6 @@
   </footer>
 
   <script>
-    // Active nav link (mark "CV" active; works for both desktop + mobile links)
-    (function setActiveNav() {
-      document.querySelectorAll('.nav-link').forEach(function(a) {
-        if (a.getAttribute('href') === 'cv.html') a.classList.add('active');
-      });
-    })();
 
     // Theme toggle (FIXED: remove duplicate/conflicting handlers; apply on load; update aria)
     (function themeInit() {
