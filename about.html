@@ -787,13 +787,15 @@
       .stats-grid { grid-template-columns: 1fr; }
       .timeline { padding-left: 2rem; }
       .nav-center { display: none !important; } /* hide desktop links */
-      .nav-left { min-width: 0; }              /* allow center title */
-      .nav-right { min-width: 0; }
+      .nav-left { display: contents; }     
+      .nav-right { margin-left: auto;
+        justify-content: flex-end; }
       .site-title {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
+        width: max-content;     /* prevents weird shrinking */
         max-width: 70%;
       }
       .site-title-name { font-size: 1.25rem; }
