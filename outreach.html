@@ -93,6 +93,63 @@
       box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
+    /* 3-zone navbar layout */
+    .nav-bar {
+      justify-content: space-between; /* left / center / right */
+    }
+    
+    .nav-left,
+    .nav-center,
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-center {
+      justify-content: center;
+      flex: 1;                 /* center gets the "middle space" */
+    }
+    
+    .nav-left,
+    .nav-right {
+      flex: 0 0 auto;
+      min-width: 220px;        /* keeps title and right controls from collapsing */
+    }
+    
+    .nav-right {
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+
+    /* Site title in navbar (light mode + dark mode) */
+    .site-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.36rem;
+      line-height: 1.1;
+      text-align: left;
+      white-space: nowrap;
+    }
+    
+    .site-title-name {
+      font-family: "Source Serif 4", ui-serif, Georgia, serif;
+      font-weight: 800;
+      font-size: 1.7rem;
+      color: #1e1e1e; /* visible on light navbar */
+    }
+    
+    .site-title-tagline {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #555; /* visible on light navbar */
+      opacity: 0.95;
+    }
+    
+    /* Dark mode colors */
+    body.dark .site-title-name { color: #ffffff; }
+    body.dark .site-title-tagline { color: rgba(255,255,255,0.80); }
+
     /* Mobile Menu */
     .mobile-menu-btn {
       display: none;
@@ -656,13 +713,63 @@
       body { max-width: 100vw; overflow-x: hidden; }
 
       .nav-bar {
+        /* keep overall spacing */
         padding: 1rem 1.5rem !important;
         justify-content: space-between;
         position: relative;
+
+        /* ensure left-positioned hamburger doesn't collide with title area */
+        padding-left: calc(1.5rem + 42px + 12px) !important; /* left padding + button width + gap */
       }
 
       .nav-links { display: none !important; }
+      .nav-center { display: none !important; } /* hide desktop links */
       .mobile-menu-btn { display: flex; }
+
+      /* override desktop min-widths that break mobile */
+      .nav-left,
+      .nav-right {
+        min-width: 0 !important;
+        flex: 0 0 auto !important;
+      }
+
+      .nav-left {
+        display: flex !important;
+        align-items: center;
+      }
+
+      /* keep theme toggle on the right */
+      .nav-right {
+        display: flex !important;
+        margin-left: auto !important;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      /* move hamburger to the left end (independent of DOM order) */
+      #mobileMenuBtn {
+        position: absolute;
+        left: 1.5rem;     /* matches nav-bar horizontal padding */
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1002;    /* above title */
+      }
+
+      /* keep title centered but don't steal taps */
+      .site-title {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: max-content;
+        max-width: 70%;
+        pointer-events: none;
+        z-index: 1001;
+      }
+
+      .site-title-name { font-size: 1.25rem; }
+      .site-title-tagline { font-size: 0.9rem; }
 
       main { padding: 1.5rem; }
 
@@ -683,26 +790,51 @@
 <body>
 
 <nav class="nav-bar">
-  <div class="nav-links">
+  <div class="nav-left">
+    <span class="site-title">
+      <span class="site-title-name">Naman Bajaj</span>
+      <span class="site-title-tagline">Tracing the Origins of Worlds</span>
+    </span>
+  </div>
+ 
+  <div class="nav-center nav-links">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="cv.html" class="nav-link">CV</a>
-    <a href="research.html" class="nav-link">Research</a>
-    <a href="publications.html" class="nav-link">Publications</a>
-    <a href="proposals.html" class="nav-link">Proposals</a>
-    <a href="outreach.html" class="nav-link">Outreach</a>
-    <a href="resources.html" class="nav-link">Resources</a>
+
+    <div class="nav-dropdown">
+      <a href="about.html" class="nav-link">About</a>
+      <div class="dropdown-menu">
+        <a href="cv.html" class="nav-link dropdown-link">CV</a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <a href="research.html" class="nav-link">Research</a>
+      <div class="dropdown-menu">
+        <a href="publications.html" class="nav-link dropdown-link">Publications</a>
+        <a href="proposals.html" class="nav-link dropdown-link">Proposals</a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <a href="outreach.html" class="nav-link">Outreach</a>
+      <div class="dropdown-menu">
+        <a href="resources.html" class="nav-link dropdown-link">Resources</a>
+      </div>
+    </div>
+
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 
-  <button class="mobile-menu-btn" id="mobileMenuBtn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <div class="nav-right">
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <button id="theme-toggle">🌓</button>
-
+    <button id="theme-toggle">🌓</button>
+  </div>
+  
   <div class="mobile-nav-links" id="mobileNavLinks">
     <a href="index.html" class="nav-link">Home</a>
     <a href="about.html" class="nav-link">About</a>
