@@ -771,33 +771,56 @@
       .hero-text h2 { font-size: 2rem; }
       .hero-subtitle { font-size: 1.1rem; }
     }
-
     @media (max-width: 768px) {
       body { max-width: 100vw; overflow-x: hidden; }
-
+    
       .nav-bar {
         padding: 1rem 1.5rem !important;
         justify-content: space-between;
         position: relative;
       }
-
+    
       .nav-links { display: none !important; }
       .mobile-menu-btn { display: flex; }
+    
       main { padding: 1.5rem; }
       .stats-grid { grid-template-columns: 1fr; }
       .timeline { padding-left: 2rem; }
+    
       .nav-center { display: none !important; } /* hide desktop links */
-      .nav-left { display: flex; }     
-      .nav-right { margin-left: auto;
-        justify-content: flex-end; }
+    
+      /* --- Mobile navbar layout fixes --- */
+      /* override desktop min-widths that break mobile */
+      .nav-left,
+      .nav-right {
+        min-width: 0 !important;
+        flex: 0 0 auto !important;
+      }
+    
+      .nav-left {
+        display: flex !important;
+        align-items: center;
+      }
+    
+      .nav-right {
+        display: flex !important;
+        margin-left: auto !important;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        align-items: center;
+      }
+    
+      /* keep title centered but avoid overlapping clicks */
       .site-title {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
-        width: max-content;     /* prevents weird shrinking */
+        width: max-content;
         max-width: 70%;
+        pointer-events: none;
       }
+    
       .site-title-name { font-size: 1.25rem; }
       .site-title-tagline { font-size: 0.9rem; }
     }
