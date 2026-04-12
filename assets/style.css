@@ -103,12 +103,13 @@ nav a.active {
 
 .nav-dropdown > .nav-link::after {
   content: "▾";
-  font-size: 0.85rem;
+  font-size: 1.15rem;
   line-height: 1;
-  opacity: 0.75;
+  opacity: 0.9;
   transform: translateY(1px);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
+
 
 .nav-dropdown:hover > .nav-link::after {
   transform: translateY(1px) rotate(180deg);
