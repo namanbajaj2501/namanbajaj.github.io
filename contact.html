@@ -125,6 +125,15 @@
     }
 
     /* Site title in navbar (light mode + dark mode) */
+    .site-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.36rem;            /* (fixes the typo that exists in about.html) */
+      line-height: 1.1;
+      text-align: left;
+      white-space: nowrap;
+    }
+    
     .site-title-name {
       font-family: "Source Serif 4", ui-serif, Georgia, serif;
       font-weight: 800;
