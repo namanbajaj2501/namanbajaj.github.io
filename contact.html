@@ -246,22 +246,59 @@
       opacity: 0.85;
     }
 
+    /* ── Contact card CSS variables ── */
+    :root {
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.09);
+      --card-border-hover: rgba(102, 126, 234, 0.35);
+      --card-text: #222;
+      --card-muted: rgba(0, 0, 0, 0.68);
+      --card-link: #4f63d6;
+      --card-link-hover: #764ba2;
+      --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.13);
+      --card-accent: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+      --card-btn-hover-bg: rgba(102, 126, 234, 0.12);
+      --card-btn-hover-border: rgba(102, 126, 234, 0.40);
+      --focus-outline: rgba(102, 126, 234, 0.55);
+    }
+
+    body.dark {
+      --card-bg: #242424;
+      --card-border: rgba(255, 255, 255, 0.11);
+      --card-border-hover: rgba(160, 180, 255, 0.35);
+      --card-text: rgba(255, 255, 255, 0.92);
+      --card-muted: rgba(255, 255, 255, 0.70);
+      --card-link: #a0b4ff;
+      --card-link-hover: #d2c2ff;
+      --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.40);
+      --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.55);
+      --card-btn-hover-bg: rgba(160, 180, 255, 0.12);
+      --card-btn-hover-border: rgba(160, 180, 255, 0.45);
+      --focus-outline: rgba(160, 180, 255, 0.65);
+    }
+
     /* Contact Cards Grid */
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.3rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
       margin: 2.5rem 0;
     }
 
     .contact-card {
       position: relative;
-      padding: 1.6rem;
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 2px solid rgba(0, 0, 0, 0.08);
-      background: var(--bg-color, #fff);
+      padding: 1.25rem 1.25rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--card-text);
+      box-shadow: var(--card-shadow);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .contact-card::before {
@@ -271,74 +308,93 @@
       left: 0;
       width: 4px;
       height: 100%;
-      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      background: var(--card-accent);
+      opacity: 0.18;
+      transition: opacity 0.2s ease;
     }
 
     .contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--card-border-hover);
     }
 
-    .contact-card:hover::before { opacity: 1; }
+    .contact-card:hover::before { opacity: 0.95; }
 
     .contact-card .icon {
-      font-size: 2rem;
-      margin-bottom: 0.7rem;
+      font-size: 1.6rem;
+      line-height: 1;
       display: block;
+      margin: 0;
     }
 
     .contact-card h3 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.15rem;
-      font-weight: 600;
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--card-text);
     }
 
     .contact-card p {
       margin: 0;
       font-size: 0.93rem;
+      line-height: 1.5;
+      color: var(--card-muted);
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .contact-card a {
       text-decoration: none;
-      color: #667eea;
+      color: var(--card-link);
       font-weight: 500;
       transition: color 0.2s ease;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .contact-card a:hover {
-      color: #764ba2;
+      color: var(--card-link-hover);
       text-decoration: underline;
+    }
+
+    .contact-card a:focus-visible,
+    .copy-btn:focus-visible {
+      outline: 3px solid var(--focus-outline);
+      outline-offset: 2px;
+      border-radius: 4px;
     }
 
     .email-container {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       flex-wrap: wrap;
     }
 
     .copy-btn {
-      padding: 0.35rem 0.75rem;
+      padding: 0.38rem 0.75rem;
       font-size: 0.82rem;
-      background: #f0f0f0;
-      border: none;
-      border-radius: 6px;
+      background: transparent;
+      border: 1px solid var(--card-border);
+      border-radius: 7px;
       cursor: pointer;
-      transition: all 0.2s ease;
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--card-text);
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      flex-shrink: 0;
     }
 
     .copy-btn:hover {
-      background: #667eea;
-      color: white;
+      background: var(--card-btn-hover-bg);
+      border-color: var(--card-btn-hover-border);
     }
 
     .copy-btn.copied {
       background: #10b981;
-      color: white;
+      border-color: #10b981;
+      color: #ffffff;
     }
 
     /* Form Styling */
@@ -682,13 +738,6 @@
     }
 
     /* Dark Mode */
-    body.dark .contact-card {
-      background: #2a2a2a;
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    body.dark .contact-card:hover { border-color: rgba(102, 126, 234, 0.5); }
-
     body.dark .contact-form-wrapper {
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
       border-color: rgba(102, 126, 234, 0.2);
@@ -705,11 +754,6 @@
     body.dark .form-group textarea:focus {
       border-color: #667eea;
       box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
-    }
-
-    body.dark .copy-btn {
-      background: #3a3a3a;
-      color: #e0e0e0;
     }
 
     /* Responsive */
@@ -872,31 +916,31 @@
     <div class="contact-card">
       <span class="icon">🎓</span>
       <h3>Google Scholar</h3>
-      <p><a href="https://scholar.google.com/citations?user=YmjCZWAAAAAJ&hl=en" target="_blank">View publications & citations</a></p>
+      <p><a href="https://scholar.google.com/citations?user=YmjCZWAAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">View publications &amp; citations</a></p>
     </div>
 
     <div class="contact-card">
       <span class="icon">🔗</span>
       <h3>LinkedIn</h3>
-      <p><a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank">Professional profile</a></p>
+      <p><a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" rel="noopener noreferrer">Professional profile</a></p>
     </div>
     
     <div class="contact-card">
       <span class="icon">🆔</span>
       <h3>ORCID</h3>
-      <p><a href="https://orcid.org/0000-0003-3401-1704" target="_blank">0000-0003-3401-1704</a></p>
+      <p><a href="https://orcid.org/0000-0003-3401-1704" target="_blank" rel="noopener noreferrer">0000-0003-3401-1704</a></p>
     </div>
     
     <div class="contact-card">
       <span class="icon">🔬</span>
       <h3>ResearchGate</h3>
-      <p><a href="https://www.researchgate.net/profile/Naman-Bajaj-2" target="_blank">Research profile</a></p>
+      <p><a href="https://www.researchgate.net/profile/Naman-Bajaj-2" target="_blank" rel="noopener noreferrer">Research profile</a></p>
     </div>
 
     <div class="contact-card">
       <span class="icon">📊</span>
       <h3>NASA ADS</h3>
-      <p><a href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=database%3Aastronomy&q=author%3A%22Bajaj%2C%20N.%20S.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">Browse all papers</a></p>
+      <p><a href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&amp;fq_database=database%3Aastronomy&amp;q=author%3A%22Bajaj%2C%20N.%20S.%22&amp;sort=date%20desc%2C%20bibcode%20desc&amp;p_=0" target="_blank" rel="noopener noreferrer">Browse all papers</a></p>
     </div>
 
   </div>
@@ -961,11 +1005,11 @@
       <input type="text" class="search-box" id="searchBox" placeholder="Search this website...">
     </div>
     <div class="footer-links">
-      <a href="https://github.com/naman-bajaj" target="_blank" class="footer-link">
+      <a href="https://github.com/naman-bajaj" target="_blank" rel="noopener noreferrer" class="footer-link">
         <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         GitHub
       </a>
-      <a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" class="footer-link">
+      <a href="https://www.linkedin.com/in/naman-bajaj-a5ab52143/" target="_blank" rel="noopener noreferrer" class="footer-link">
         <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         LinkedIn
       </a>
