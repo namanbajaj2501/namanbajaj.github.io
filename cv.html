@@ -378,8 +378,9 @@
 
       constellation.innerHTML = '';
       const dots = [];
-      const numDots = Math.max(10, Math.round(width / 28));
-      const maxDist = Math.min(250, width * 0.2);
+      const isMobile = width < 768;
+      const numDots = Math.max(isMobile ? 20 : 10, Math.round(width / (isMobile ? 15 : 28)));
+      const maxDist = Math.min(250, isMobile ? Math.max(150, width * 0.4) : width * 0.2);
 
       for (let i = 0; i < numDots; i++) {
         const dot = document.createElement('div');
